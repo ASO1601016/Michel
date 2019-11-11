@@ -1,0 +1,20 @@
+::placeholder {
+ font-size: 70%;
+}
+
+.bg-gray {
+ background-color: darkgrey;
+}
+
+.imagePreview {
+    width: 100%;
+    height: 180px;
+    background-position: center center;
+    background-size: cover;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
+    display: inline-block;
+}
+
+.wrap {
+ overflow: hidden;
+}

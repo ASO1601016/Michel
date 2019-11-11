@@ -1,0 +1,17 @@
+.filelabel {
+    background-color: rgb(211, 195, 166);  /* 背景色 */
+    color: white;              /* 文字色 */
+    border: 2px solid orange;  /* 枠線 */
+    padding: 12px 9px;         /* 内側の余白 */
+    display: inline-block;     /* インラインブロック化 */
+ }
+ .filelabel img {
+    vertical-align: bottom;    /* 画像の垂直方向の配置 */
+ }
+ .filelabel:hover {
+    opacity: 0.5;              /* 半透明 */    /* 枠線(赤色) */
+    cursor: pointer;           /* マウス形状(ポインタ) */
+ }
+ #filesend {
+    display: none;  /* 本来のファイル選択フォームは非表示に */
+ }
