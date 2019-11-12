@@ -2,5 +2,5 @@
 
 @section('title',"表示用")
 @section('content')
-こんにちは
+こんにち
 @endsection
