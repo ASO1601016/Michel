@@ -62,7 +62,26 @@ Route::middleware(AuthMiddleware::class)->group(function(){
 
     Route::post('assessmentComplete','UserController@assessmentComplete');
 
-    Route::get('detail','MichelController@detail');
+
+
+
+    // 村瀬
+
+    //投稿フォームページ
+    Route::get('solution', 'SolutionController@showCreateForm')->name('solutions.create');
+    Route::post('solution', 'SolutionController@create');
+
+    //投稿詳細ページ
+    Route::get('detail', 'SolutionController@detail')->name('solutions.detail');
+    Route::get('apply', 'SolutionController@apply');
+
+
+
+
+    // 溝越
+
+
+
 });
 
 

@@ -1,0 +1,72 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.form input {
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+}
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  width: 100%;
+  color: red;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form button:hover,.form button:active,.form button:focus {
+  opacity: 0.7;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}      
+
+
+.text-small {
+    font-size: 40%;
+}
+
+.gradient {
+    background: linear-gradient(86deg, #ffffff, #000000);
+    background-size: 400% 400%;
+
+    -webkit-animation: AnimationName 29s ease infinite;
+    -moz-animation: AnimationName 29s ease infinite;
+    animation: AnimationName 29s ease infinite;
+
+    @-webkit-keyframes AnimationName {
+        0%{background-position:0% 51%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 51%}
+    }
+    @-moz-keyframes AnimationName {
+        0%{background-position:0% 51%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 51%}
+    }
+    @keyframes AnimationName {
+        0%{background-position:0% 51%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 51%}
+    }
+}
+
+.bg-orange {
+    background-color: chocolate;
+    color: white;
+}
+
+.field-icon {
+  color: #555;
+  float: right;
+  margin-right: 15px;
+  margin-top: -40px;
+  position: relative;
+  z-index: 2;
+  align-items:middle;
+}
+div.ib{
+  display:inline-block;
+}

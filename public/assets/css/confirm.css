@@ -1,0 +1,61 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+body {
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}      
+
+.text-small {
+  font-size: 80%;
+  word-break: break-all;
+}
+
+.gradient {
+  background: linear-gradient(86deg, #ffffff, #000000);
+  background-size: 400% 400%;
+
+  -webkit-animation: AnimationName 29s ease infinite;
+  -moz-animation: AnimationName 29s ease infinite;
+  animation: AnimationName 29s ease infinite;
+
+  @-webkit-keyframes AnimationName {
+      0%{background-position:0% 51%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 51%}
+  }
+  @-moz-keyframes AnimationName {
+      0%{background-position:0% 51%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 51%}
+  }
+  @keyframes AnimationName {
+      0%{background-position:0% 51%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 51%}
+  }
+}
+
+.bg-orange {
+  background-color: chocolate;
+  color: white;
+}
+
+.border-lg {
+  border-color: red;
+  border-style: solid;
+  border-width: 0 0 0 thick;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+
+
+table,tr,td {
+  border:none;
+}

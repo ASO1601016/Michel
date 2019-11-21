@@ -167,13 +167,13 @@ class UserController extends Controller
         array_multisort( array_map( "strtotime", array_column( $mergeMessage, 'datetime' ) ), SORT_ASC, $mergeMessage ) ;
         
         $you = $user->where('id',$youId)->first();
-        $img = $you->image; 
+        $img = $you->userImage; 
         if($flag){
             $my = $user->where('id',$myId)->first();
-            $topImg = $my->image;
+            $topImg = $my->userImage;
             $name = $my->name;    
         }else{
-            $topImg = $you->image;
+            $topImg = $you->userImage;
             $name = $you->name;
         }
         $title = $solution->where('id',$solutionId)->first()->title;
@@ -190,16 +190,25 @@ class UserController extends Controller
     //dm一覧
     public function dmList(Request $request){
         $solution = new \App\solution;
+        $dm = new \App\directMail;
+        $msg = new \App\message;
 
-        
         $solutionId = $request->session()->get('solutionId');
         if(!empty($solutionId)){
             $request->session()->forget('solutionId');
         }
 
         $myId =  $request->session()->get('userid'); //自分のid
-        $dmLists = $solution->where('comp_flag',0)->where('solutionUser_id',$myId)->orWhere('resolutionUser_id',$myId)->get('id');
-
+        $dmLists = $solution->where('comp_flag',0)->where(function($query) use($myId){$query->where('solutionUser_id',$myId)->orWhere('resolutionUser_id',$myId);})->get();
+        
+        foreach ($dmLists as $dmList) {
+            $lastDm = $dm->where('id_Solution',$dmList->id)->orderBy('id', 'desc')->first();
+            if(!empty($lastDm)){
+                $last = $msg->where('id',$lastDm->message_id)->first()->message;
+                $dmList['lastDm'] = $last;
+            }
+            
+        }
         return view('michel.dmList')->with('dmLists',$dmLists);
     }
 
@@ -211,11 +220,11 @@ class UserController extends Controller
             $icon = $request->file('icon');
             $path = $icon->store('public/icon');
             $dbSavePath = str_replace('public/', 'storage/', $path);
-            $dbPath = $User->where('id',$id)->first()->image;
+            $dbPath = $User->where('id',$id)->first()->userImage;
             if(!empty($dbPath)){
                 Storage::delete($dbPath);
             }
-            $User->where('id',$id)->update(['image' => $dbSavePath]);
+            $User->where('id',$id)->update(['userImage' => $dbSavePath]);
         }
 
         
@@ -223,7 +232,7 @@ class UserController extends Controller
         $data = [
             'name'=>$display->name,
             'detail'=>$display->detail,
-            'image'=>$display->image,
+            'image'=>$display->userImage,
         ];
 
         return view('michel.edit',$data);
@@ -248,12 +257,17 @@ class UserController extends Controller
     public function mypage(Request $request){
         $User = new \App\User;
         $School = new \App\School;
-
-        
+        $solution = new \App\Solution;
+        $category = new \App\category;
 
         $id = $request->session()->get('userid');
         $display = $User->where('id',$id)->first();
         $schoolName = $School->where('id',$display->id_School)->first()->name;
+
+        $solutionComp = $solution->where('solutionUser_id',$id)->where('comp_flag',1)->count();
+        
+        $recruitmentSolution = $solution->where('solutionUser_id',$id)->where('apply_flag',0)->get();
+        $cate = $category->all();
 
         $data = [
             'name'=>$display->name,
@@ -261,7 +275,10 @@ class UserController extends Controller
             'sex'=>$display->sex,
             'detail'=>$display->detail,
             'status'=>$display->status,
-            'image'=>$display->image,
+            'image'=>$display->userImage,
+            'comp'=>$solutionComp,
+            'recruit'=>$recruitmentSolution,
+            'category'=>$cate,
         ];
 
         return view('michel.mypage',$data);
@@ -351,7 +368,7 @@ class UserController extends Controller
             $User->sex = $sex;
             $User->detail = $intro;
             $User->status = 0;
-            $User->image = $read_path;
+            $User->userImage = $read_path;
             
             
             $User->save();
@@ -369,7 +386,7 @@ class UserController extends Controller
                 'sex' => $data["sex"],
                 'intro' => $data["intro"]
             ]);
-            return redirect()->action('HelloController@index');
+            return redirect()->action('HelloController@regist');
         }
 
     }

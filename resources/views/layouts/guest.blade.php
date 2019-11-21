@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('/assets/css/guest.css') }}">
         @yield('css')
 
@@ -22,9 +23,9 @@
             @yield('header')
             <header class="sticky-top">
                 <h4 class="container-fluid text-center border p-2 m-0 bg-white text-orange">
-                    <i class="fa fa-cutlery" aria-hidden="true"></i>
+                    
                     MICHEL
-                    <i class="fa fa-home" aria-hidden="true"></i>
+                    
                 </h4>
                 <div class="text-small gradient text-right text-white pr-1">
                     @yield('headerTitle')

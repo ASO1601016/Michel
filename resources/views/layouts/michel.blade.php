@@ -1,96 +1,97 @@
-<!DOCTYPE html>
-<html lang="ja">
+<html>
     <head>
-        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
+        <link rel="stylesheet" href="{{ asset('/assets/css/header.css') }}">
         @yield('css')
-
         <title>@yield('title')</title>
 
-        <style>
-            /* .header{
-                font-size:120pt;
-                text-align:right;
-                color:#f6f6f6;
-                margin:-50px 0px -100px 0px;
-            } */
-
-            /* .footer{
-                text-align:center;
-            }
-
-            body{
-                font-size:16pt; color:#999;
-            } */
-        </style>
-
     </head>
-    <body>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <body class="drawer drawer--left bg-dm">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         
-        {{-- <div class="header"> --}}
-            {{-- Michel --}}
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
+        <script>
+            $(document).ready(function() {
+              $('.drawer').drawer();
+            });
+        </script>
+        
+        
+        <div class="header">
             @yield('header')
-            <header class="header">
-                    <div id="header_bar" >
-                        <nav class="navbar navbar-dark bg-dark">
-                            
-                            <!--ハンバーガーボタン-->
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            
-                            <!--タイトル-->
-                            <a class="header_brand" href="#">michel  
-                            </a>
-                            
-                            <!--ログアウト-->
-                            <a href="#">ログアウト</a>
-                
-                            <!--ハンバーガー　中身-->
-                            <div class="collapse navbar-collapse" id="navbarsExample01">
-                                <ul class="navbar-nav mr-auto">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">マイページ</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">お気に入り</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">達成履歴（仮）</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">投稿履歴</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">設定（仮）</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">ヘルプ（仮）</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </nav>
-                        <nav class="navbar navbar-dark bg-dark">
-                            <form class="form-inline my-2 my-md-0">
-                                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                            </form>
-                        </nav>
-                    </div> 
-                </header>
-            {{-- </div> --}}
+        </div>
+        
+  <header role="banner">
+    <button type="button" class="drawer-toggle drawer-hamburger">
+      <span class="sr-only">toggle navigation</span>
+      <span class="drawer-hamburger-icon"></span>
+    </button>
+    <nav class="drawer-nav" role="navigation">
+      <ul class="drawer-menu">
+        
+        <li class="text-center">
+            <button class="btn programbtn rounded m-3 p-2" style="color:white;background: linear-gradient(180deg, #FFC778, #ff598f);">
+                <i class="fa fa-pencil-square-o" aria-hidden="true" style="color:white;"></i><a href="./solution" style="color:white;text-decoration:none;">投稿する</a>
+            </button>
+        </li>
 
+        <li><a class="drawer-menu-item" href="./mypage">
+            <i class="fa fa-user-circle-o" aria-hidden="true" style="color:#444444;"></i>マイページ</a>
+        </li>
+        <li><a class="drawer-menu-item" href="#">
+            <i class="fa fa-heart" aria-hidden="true" style="color:#444444;"></i>お気に入り</a>
+        </li>
+        <li><a class="drawer-menu-item" href="./dmList">
+            <i class="fa fa-commenting" aria-hidden="true" style="color:#444444;"></i>DM一覧</a>
+        </li>
+        <li><a class="drawer-menu-item" href="#">
+            <i class="fa fa-trophy" aria-hidden="true" style="color:#444444;"></i>達成履歴</a>
+        </li>
+        <li><a class="drawer-menu-item" href="#">
+            <i class="fa fa-history" aria-hidden="true" style="color:#444444;"></i>投稿履歴</a>
+        </li>
+        <li><a class="drawer-menu-item" href="#">
+            <i class="fa fa-cog"  aria-hidden="true" style="color:#444444;"></i>設定</a>
+        </li>
+        <li><a class="drawer-menu-item" href="#">
+            <i class="fa fa-question-circle" aria-hidden="true" style="color:#444444;"></i>ヘルプ</a>
+        </li>
+        <li><a class="drawer-menu-item" href="./logout">
+            <i class="fa fa-sign-out" aria-hidden="true" style="color:#444444;"></i>ログアウト</a>
+        </li>   
+      </ul>
+    </nav>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid navcont">
+            <div class="navbar-header d-block mx-auto">
+                <button class="titlebtn"><img src="storage/image/titlebrk.png"></button>
+            </div>
+        </div>     
+    </nav>
+    <nav class="navbar navbar-expand navbar-dark">
+        <div class="collapse navbar-collapse" id="navbarsExample02">
+            <form class="form-inline my-2 my-md-0 mx-auto w-75">
+                <input class="form-control" type="text" placeholder="Search">
+            </form>
+      </div>
+    </nav>
+  </header>
         <div class="content">
             @yield('content')
         </div>
-
         <div class="footer">
-            copyright 2019 akasoo.
+            
         </div>
+        
     </body>
 </html>

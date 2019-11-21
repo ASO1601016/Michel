@@ -115,7 +115,7 @@
                 </div>
 
                 <!-- 登録ボタン -->
-                <input type="submit" class="btn btn-lg btn-block border-danger text-danger bg-white mt-5" value="登録する">
+                <input type="submit" class="btn btn-lg btn-block border-danger text-danger bg-white mt-5" value="確認画面へ">
             </form>
         </div>
     </div>

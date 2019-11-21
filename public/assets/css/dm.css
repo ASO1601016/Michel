@@ -1,0 +1,179 @@
+/* .wrap {
+	overflow: hidden;
+} */
+
+/* .mmm{
+  margin-bottom: 15%;
+} */
+
+
+.bg-ao{
+  background-color: #BBDEFB;
+}
+
+.time-p{
+  text-align: left;
+  margin-left: 2px;
+  font-size:10px;
+}
+
+.time-m{
+  font-size:10px;
+  margin-right: 2px;
+}
+
+.text-area {
+  resize: none;
+}
+
+::placeholder {
+	font-size: 90%;
+}
+
+.bg-dm{
+  background-color: #F8F9FA;
+}
+
+.header-image {
+    height:8%;
+    padding: 5px;
+    
+}
+
+.tbl{
+  color:black;
+}
+
+/* .header-image::before {
+    /* 透過した黒を上から重ねるイメージ */
+    /* background-color: rgba(0,0,0,0.4);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: ' ';
+    height:250px; 
+    
+}*/
+.text-middle {
+  font-size: 100%;
+  color: black;
+}
+
+.text-small {
+    font-size: 60%;
+    color: black;
+}
+
+/*以下、①背景色など*/
+.line-bc {
+
+    width: 100%;
+    padding:0 10px 0 15px;
+    margin: 15px auto;
+    text-align: right;
+    font-size: 14px;
+  }
+  
+  /*以下、②左側のコメント*/
+  .partner {
+    width: 100%;
+    margin: 10px 0;
+    overflow: hidden;
+  }
+  
+  .partner .faceicon {
+    float: left;
+    margin-right: -50px;
+    width: 40px;
+  }
+  
+  .partner .faceicon img{
+    border-radius: 50%;
+  }
+  .partner .chatting {
+    width: 100%;
+    text-align: left;
+  }
+  .says {
+    display: inline-block;
+    position: relative; 
+    margin: 0 0 0 60px;
+    padding: 10px;
+    max-width: 200px;
+    border-radius: 12px;
+    background: white;
+  }
+
+  
+  .says:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 3px; 
+    left: -19px;
+    border: 8px solid transparent;
+    border-right: 18px solid white;
+    -webkit-transform: rotate(35deg);
+    transform: rotate(35deg);
+  }
+  .says p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /*以下、③右側の緑コメント*/
+  .mycomment {
+    margin: 10px 0;
+  }
+  .mycomment p {
+    display: inline-block;
+    position: relative; 
+    margin: 0 10px 0 0;
+    padding: 8px;
+    max-width: 200px;
+    border-radius: 12px;
+    background: #BBFFFF;
+    /* font-size: 15px: */
+    text-align: left;
+
+  }
+  
+  .mycomment p:after {
+    content: "";
+    position: absolute;
+    top: 3px; 
+    right: -19px;
+    border: 8px solid transparent;
+    border-left: 18px solid #BBFFFF;
+    -webkit-transform: rotate(-35deg);
+    transform: rotate(-35deg);
+  }
+
+  /* テキストエリア、送信ボタン④ */
+.bg-white {
+    background: white;
+}
+
+.text-min {
+    font-size: 20%
+}
+
+.btn-sm {
+    font-size: 10%;
+}
+
+.btn-flat-simple {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    background: #ECECEC;
+    transition: .4s;
+  }
+
+  .a {
+    text-decoration: none;
+    }

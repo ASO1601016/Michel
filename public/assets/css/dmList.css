@@ -1,0 +1,24 @@
+a:hover{
+    opacity: 0.8;
+}
+
+.wrap{
+    overflow: hidden;
+}
+
+.bg-dm{
+    background-color: #F8F9FA;
+}
+
+.text-title {
+    font-size: 100%;
+}
+
+.imagePreview {
+    width: 100%;
+    height: 180px;
+    background-position: center center;
+    background-size: cover;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
+    display: inline-block;
+}

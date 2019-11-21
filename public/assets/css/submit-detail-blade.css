@@ -1,0 +1,50 @@
+
+.bg-dm{
+    background-color: #F8F9FA;
+  }
+
+.wrap {
+	overflow: hidden;
+}
+.image {
+    background: url(img/0abe36f8bf0ee02d1c7d36f5308986b8_m.jpg)no-repeat center;
+    background-size: cover;
+    text-align: center;
+    background-color: white;
+}
+.gazo {
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.6));
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+}
+
+.jumbotron-fluid{
+    background-color: gray;
+}
+
+.container-fluid.img {
+    position: relative;
+}
+
+.container-fluid time::before {
+    content: "|";
+    color: gray;
+}
+
+.row time::before {
+    content: "|";
+    color: gray;
+}
+
+.text-small {
+    font-size: 70%;
+}
+.text-middle {
+    font-size: 85%;
+}
+
+.btn{
+    display: inline-block;
+}
+
