@@ -14,7 +14,7 @@
 use App\Http\Middleware\AuthMiddleware;
 
 Route::get('/', function () {
-    return view('heloo.landing');
+    return view('hello.landing');
 });
 
 //確認
