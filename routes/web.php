@@ -13,7 +13,7 @@
 
 use App\Http\Middleware\AuthMiddleware;
 
-Route::get('/', function () {
+Route::get('Michel', function () {
     return view('hello.landing');
 });
 
