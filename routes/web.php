@@ -28,7 +28,7 @@ Route::post('confirm','HelloController@post');
 
 Route::post('complete','UserController@complete');
 
-Route::get('/login','UserController@login');
+Route::get('login','UserController@login');
 
 Route::post('login_check','UserController@login_check');
 
