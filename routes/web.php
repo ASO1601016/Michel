@@ -14,7 +14,7 @@
 use App\Http\Middleware\AuthMiddleware;
 
 Route::get('/', function () {
-    return view('hello.landing');
+    return '<?php echo __FILE__ ; ?>'
 });
 
 //確認
