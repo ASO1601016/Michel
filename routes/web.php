@@ -13,9 +13,9 @@
 
 use App\Http\Middleware\AuthMiddleware;
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('hello.landing');
-});
+}); */
 
 //確認
 Route::get('searchResult', function () {
@@ -28,7 +28,7 @@ Route::post('confirm','HelloController@post');
 
 Route::post('complete','UserController@complete');
 
-Route::get('login','UserController@login');
+Route::get('/','UserController@login');
 
 Route::post('login_check','UserController@login_check');
 
