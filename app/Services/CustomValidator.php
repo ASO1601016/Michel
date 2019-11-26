@@ -17,7 +17,7 @@ class CustomValidator extends \Illuminate\Validation\Validator
   public function validateHash($attribute, $value, $parameters)
   {
 
-    $User = new \App\User;
+    $User = new \App\user;
     $id = $this->getValue('id');
     
     $passObject = $User->where('id',$id)->first('pass');
