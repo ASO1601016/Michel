@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Favorite;
-use App\Solution;
+use App\favorite;
+use App\solution;
 use Illuminate\Http\Request;
 
 class FavoriteController extends Controller
@@ -11,18 +11,18 @@ class FavoriteController extends Controller
     public function index(Request $request)
     {
         $id = $request->session()->get('userid');
-        $fav = Favorite::select('solution_id')
+        $fav = favorite::select('solution_id')
                 ->where('user_id', $id)
                 ->orderBy('favo_date', 'desc')
                 ->get();
-        $items = Solution::whereIn('id', $fav)
+        $items = solution::whereIn('id', $fav)
                 ->get();
         return view('favorite.index', ['items'=>$items]);
     }
 
     public function favoComplete(Request $request)
     {
-        $favo = new \App\Favorite;
+        $favo = new \App\favorite;
         
         
         $id = $request->session()->get('userid');
