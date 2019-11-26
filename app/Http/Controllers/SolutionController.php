@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Solution;
-use App\Category;
-use App\User;
-use App\Favorite;
+use App\solution;
+use App\category;
+use App\user;
+use App\favorite;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -17,7 +17,7 @@ class SolutionController extends Controller
 
     public function showCreateForm()
    {
-    $items = \App\Category::get();
+    $items = \App\category::get();
     return view('solutions.create')->with('items',$items);
    }
 
@@ -73,7 +73,7 @@ class SolutionController extends Controller
     */
    public function detail(Solution $solution,Request $request)
    {
-        $favo = new \App\Favorite;
+        $favo = new \App\favorite;
         $myId = $request->session()->get('userid');
         $count = $favo->where('solution_id',$request->id)->where('user_id',$myId)->count();
         $favoBool = false;
@@ -81,10 +81,10 @@ class SolutionController extends Controller
             $favoBool = true;
         }
 
-        $titleFind = Solution::where('id',$request->id)->first('title');
-        $detailFind = Solution::where('id',$request->id)->first('detail');
-        $dateFind = Solution::where('id',$request->id)->first('created_at');
-        $favoCount = Solution::select('id')->whereIn('title',$titleFind)->whereIn('detail',$detailFind)->whereIn('created_at',$dateFind);
+        $titleFind = solution::where('id',$request->id)->first('title');
+        $detailFind = solution::where('id',$request->id)->first('detail');
+        $dateFind = solution::where('id',$request->id)->first('created_at');
+        $favoCount = solution::select('id')->whereIn('title',$titleFind)->whereIn('detail',$detailFind)->whereIn('created_at',$dateFind);
         $favoCount = $favo->whereIn('solution_id',$favoCount)->count();
 
         //$items = \App\Solution::where('id','30')->first();
@@ -94,7 +94,7 @@ class SolutionController extends Controller
             ->join('Users', 'Solutions.solutionUser_id', '=', 'Users.id')
             ->where('Solutions.id',$solutionId)->first();
         
-        $mySolutionBool = Solution::where('id',$solutionId)->where('solutionUser_id',$myId)->exists();
+        $mySolutionBool = solution::where('id',$solutionId)->where('solutionUser_id',$myId)->exists();
         
         return view('solutions.detail')->with('title',$items)->with('favoBool',$favoBool)->with('favoCount',$favoCount)->with('mySolutionBool',$mySolutionBool);
              
@@ -103,7 +103,7 @@ class SolutionController extends Controller
    public function apply(Request $request){
         $solutionId = $request->session()->get('solutionId');
         $myId = $request->session()->get('userid');
-        \App\Solution::where('id', $solutionId)->update(['apply_flag' => '1','resolutionUser_id'=>$myId]);
+        \App\solution::where('id', $solutionId)->update(['apply_flag' => '1','resolutionUser_id'=>$myId]);
         $request->session()->forget('solutionId');
         return redirect()->action('MichelController@top');
    }
@@ -115,8 +115,8 @@ class SolutionController extends Controller
         {
             $cate = $request->category;
             $myId = $request->session()->get('userid');
-            $items = Solution::where('solutionUser_id','<>',$myId)->where('apply_flag',0)->where('category_id', $cate)->get();
-            $cateName = Category::where('id',$cate)->first()->name;
+            $items = solution::where('solutionUser_id','<>',$myId)->where('apply_flag',0)->where('category_id', $cate)->get();
+            $cateName = category::where('id',$cate)->first()->name;
             if($items->count() > 0){
                 return view('solutions.searchResult', ['items' => $items, 'word' => $cateName]);
             }else{
@@ -130,7 +130,7 @@ class SolutionController extends Controller
             if(isset($search)){
                 $search = mb_convert_kana($search, 's','utf-8');
                 $data = preg_split("/[\s]+/", $search);
-                $items = Solution::where('solutionUser_id','<>',$myId)->where('apply_flag',0)
+                $items = solution::where('solutionUser_id','<>',$myId)->where('apply_flag',0)
                                     ->groupBy('solutionUser_id', 'title', 'created_at')
                                     ->wordSearch($data);
                 
