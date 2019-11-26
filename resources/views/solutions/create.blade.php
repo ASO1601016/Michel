@@ -28,6 +28,9 @@
           <div class="form-group">
             <input class="form-control" name="title" value="{{ old('title') }}" placeholder="例）昼の弁当買い出し代行承ります">
           </div>
+          @if ($errors->has('title'))
+              <div class="bg-danger text-white mt-2 pl-1 border border-danger rounded ib"><b>{{$errors->first('title')}}</b></div>
+          @endif
         </div>
       </div>
       
@@ -39,7 +42,10 @@
         </h5>
         <div class="form-group">
           <textarea class="form-control" name="detail" placeholder="例）サービスの内容、ユーザーのメリット、アピールしたい実績などを具体的に書いてください。">{{ old('detail') }}</textarea>   
-        </div>     
+        </div>
+        @if ($errors->has('detail'))
+            <div class="bg-danger text-white mt-2 pl-1 border border-danger rounded ib"><b>{{$errors->first('detail')}}</b></div>
+        @endif
       </div>
 
       <div class="container-fluid mt-5 form-category_id form-category_id">
@@ -55,6 +61,9 @@
               <option value={{$item -> id}} @if(old('category_id') == $item -> id) selected  @endif>{{$item -> name}}</option>
             @endforeach
           </select>
+          @if ($errors->has('category_id'))
+              <div class="bg-danger text-white mt-2 pl-1 border border-danger rounded ib"><b>{{$errors->first('category_id')}}</b></div>
+          @endif
         </div>
 
         <h5>
@@ -77,21 +86,40 @@
             <option value="10" @if(old('grade')=='10') selected  @endif>10</option>
           </select>
         </div>
+        @if ($errors->has('grade'))
+            <div class="bg-danger text-white mt-2 pl-1 border border-danger rounded ib"><b>{{$errors->first('grade')}}</b></div>
+        @endif
+
+
+        <h5>
+          <strong>
+            <label for="image">締め切り日</label> <span class="text-danger">必須</span>
+          </strong>
+        </h5>
+        <div class="form-group mb-3">
+            <input type="date" name="limit" value="{{ old('limit') }}">
+        </div>
+        @if ($errors->has('limit'))
+            <div class="bg-danger text-white mt-2 pl-1 border border-danger rounded ib"><b>{{$errors->first('limit')}}</b></div>
+        @endif
 
         <div class="form-image">
           <h5>
             <strong>
-              <label for="image">画像</label> 
+              <label for="image">画像</label> <span class="text-muted">任意</span>
             </strong>
           </h5>
-          <div class="container-fluid  p-2">
+          <div class="container-fluid p-2">
             <input type="file" class="" name="image" value="{{ old('image') }}">
             <div class="preview" />
           </div>
-          <div class="form-submit">
-            <button type="submit" class="btn btn-success btn-lg btn-block my-3">投稿する</button>
-          </div>
         </div>
+        
+
+        <div class="form-submit">
+          <button type="submit" class="btn btn-success btn-lg btn-block my-3">投稿する</button>
+        </div>
+
       </div>
     </div>
 </form>

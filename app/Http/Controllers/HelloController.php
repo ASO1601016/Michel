@@ -22,7 +22,7 @@ class HelloController extends Controller{
     public function post(Request $request){
 
         $validate_rule = [
-            'number' => 'required|integer|digits:7|unique:Users,id',
+            'number' => 'required|integer|digits:7|unique:users,id',
             'password' => 'required|confirmed|regex:/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i',
             'password_confirmation' => 'required',
             'nickname' => 'required|string',

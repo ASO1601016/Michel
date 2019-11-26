@@ -263,12 +263,14 @@ class UserController extends Controller
         $id = $request->session()->get('userid');
         $display = $User->where('id',$id)->first();
         $schoolName = $School->where('id',$display->id_School)->first()->name;
-
-        $solutionComp = $solution->where('solutionUser_id',$id)->where('comp_flag',1)->count();
         
-        $recruitmentSolution = $solution->where('solutionUser_id',$id)->where('apply_flag',0)->get();
+        $solutionComp = $solution->groupBy('solutionUser_id', 'title', 'created_at')->where('solutionUser_id',$id)->where('comp_flag',1);
+        
+        $recruitmentSolution = $solution->groupBy('solutionUser_id', 'title', 'created_at')->where('solutionUser_id',$id)->where('apply_flag',0)->get();
         $cate = $category->all();
 
+        $completeSolution = $solutionComp->get();
+        
         $data = [
             'name'=>$display->name,
             'school'=>$schoolName,
@@ -276,7 +278,8 @@ class UserController extends Controller
             'detail'=>$display->detail,
             'status'=>$display->status,
             'image'=>$display->userImage,
-            'comp'=>$solutionComp,
+            'comp'=>$solutionComp->count(),
+            'complete'=>$completeSolution,
             'recruit'=>$recruitmentSolution,
             'category'=>$cate,
         ];

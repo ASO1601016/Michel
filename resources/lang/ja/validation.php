@@ -15,7 +15,7 @@ return [
 
     'accepted'             => ':attributeを承認してください。',
     'active_url'           => ':attributeは正しいURLではありません。',
-    'after'                => ':attributeは:date以降の日付にしてください。',
+    'after'                => ':attributeは明日以降の日付にしてください。',
     'alpha'                => ':attributeは英字のみにしてください。',
     'alpha_dash'           => ':attributeは英数字とハイフンのみにしてください。',
     'alpha_num'            => ':attributeは英数字のみにしてください。',
@@ -116,6 +116,12 @@ return [
         'intro'=>'自己紹介',
         'icon'=>'アイコン',
         'star'=>'評価',
+        'limit'=>'日付',
+        'title'=>'タイトル',
+        'detail'=>'サービス内容',
+        'category_id'=>'カテゴリ',
+        'grade'=>'募集人数',
+        'tomorrow-1day'=>'明日',
     ],
 
 ];

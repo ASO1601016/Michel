@@ -40,15 +40,15 @@
       <ul class="drawer-menu">
         
         <li class="text-center">
-            <button class="btn programbtn rounded m-3 p-2" style="color:white;background: linear-gradient(180deg, #FFC778, #ff598f);">
-                <i class="fa fa-pencil-square-o" aria-hidden="true" style="color:white;"></i><a href="./solution" style="color:white;text-decoration:none;">投稿する</a>
+            <button class="btn programbtn rounded m-3 p-2" style="color:white;background: linear-gradient(180deg, #FFC778, #ff598f);" onclick="location.href='./solution'">
+                <i class="fa fa-pencil-square-o" aria-hidden="true" style="color:white;"></i>投稿する
             </button>
         </li>
 
         <li><a class="drawer-menu-item" href="./mypage">
             <i class="fa fa-user-circle-o" aria-hidden="true" style="color:#444444;"></i>マイページ</a>
         </li>
-        <li><a class="drawer-menu-item" href="#">
+        <li><a class="drawer-menu-item" href="./favorite">
             <i class="fa fa-heart" aria-hidden="true" style="color:#444444;"></i>お気に入り</a>
         </li>
         <li><a class="drawer-menu-item" href="./dmList">
@@ -74,14 +74,15 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid navcont">
             <div class="navbar-header d-block mx-auto">
-                <button class="titlebtn"><img src="storage/image/titlebrk.png"></button>
+                <button class="titlebtn" onclick="location.href='./top'"><img src="storage/image/titlebrk.png"></button>
             </div>
         </div>     
     </nav>
     <nav class="navbar navbar-expand navbar-dark">
         <div class="collapse navbar-collapse" id="navbarsExample02">
-            <form class="form-inline my-2 my-md-0 mx-auto w-75">
-                <input class="form-control" type="text" placeholder="Search">
+            <form class="form-inline my-2 my-md-0 mx-auto w-75" method="post" action="./searchResult">
+                @csrf
+                <input class="form-control" type="text" name="search" placeholder="Search">
             </form>
       </div>
     </nav>

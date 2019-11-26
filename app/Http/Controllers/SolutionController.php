@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Solution;
 use App\Category;
 use App\User;
+use App\Favorite;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -22,22 +23,18 @@ class SolutionController extends Controller
 
    public function create(Request $request)
    {
-    
-       // Postモデルのインスタンスを作成する
-       $solution = new Solution();
-       $solution->solutionUser_id = $request->session()->get('userid');
+        
+        $validate_rule = [
+            'title' => 'required',
+            'detail' => 'required',
+            'category_id' => 'required',
+            'grade' => 'required',
+            'limit' => 'required|after:tomorrow-1day',
+        ];
+        
+        $this->validate($request,$validate_rule);
 
-       $image = $request->file('image');
-       $img_path = $image->store('public/solution');
-       $read_img_path = str_replace('public/', 'storage/', $img_path);
-       $solution->image = $read_img_path;
-
-        //カテゴリ
-        $solution->category_id = $request->category_id;
-        // タイトル
-        $solution->title = $request->title;
-        //コンテンツ
-        $solution->detail = $request->detail;
+       
         //登録ユーザーからidを取得
         //$solution->user_id = Auth::user()->id;
         // インスタンスの状態をデータベースに書き込む
@@ -46,18 +43,21 @@ class SolutionController extends Controller
             $solution = new Solution();
 
             $solution->solutionUser_id = $request->session()->get('userid');
-
-            $image = $request->file('image');
-            $img_path = $image->store('public/solution');
-            $read_img_path = str_replace('public/', 'storage/', $img_path);
-            $solution->image = $read_img_path;
-
+            if(isset($request->image)){
+                $image = $request->file('image');
+                $img_path = $image->store('public/solution');
+                $read_img_path = str_replace('public/', 'storage/', $img_path);
+                $solution->image = $read_img_path;
+            }
             //カテゴリ
             $solution->category_id = $request->category_id;
             // タイトル
             $solution->title = $request->title;
             //コンテンツ
             $solution->detail = $request->detail;
+            //締め切り日
+            $solution->limitDate = $request->limit;
+
             $solution->save();
        }
 
@@ -65,24 +65,81 @@ class SolutionController extends Controller
        //　結合時トップページにリダイレクトするように   
        return redirect()->action('MichelController@top');
 
+       //確認用
+        // return view('hello.temp');
    }
    /**
     * 詳細ページ
     */
-   public function detail(Solution $solution)
+   public function detail(Solution $solution,Request $request)
    {
-        //$items = \App\Solution::where('id','30')->first();
+        $favo = new \App\Favorite;
+        $myId = $request->session()->get('userid');
+        $count = $favo->where('solution_id',$request->id)->where('user_id',$myId)->count();
+        $favoBool = false;
+        if($count > 0){
+            $favoBool = true;
+        }
 
+        $titleFind = Solution::where('id',$request->id)->first('title');
+        $detailFind = Solution::where('id',$request->id)->first('detail');
+        $dateFind = Solution::where('id',$request->id)->first('created_at');
+        $favoCount = Solution::select('id')->whereIn('title',$titleFind)->whereIn('detail',$detailFind)->whereIn('created_at',$dateFind);
+        $favoCount = $favo->whereIn('solution_id',$favoCount)->count();
+
+        //$items = \App\Solution::where('id','30')->first();
+        $request->session()->put('solutionId', $request->id);
+        $solutionId = $request->id;
         $items = \DB::table('Solutions')
             ->join('Users', 'Solutions.solutionUser_id', '=', 'Users.id')
-            ->where('Solutions.id','10')->first();
+            ->where('Solutions.id',$solutionId)->first();
         
-        return view('solutions.detail')->with('title',$items);
+        $mySolutionBool = Solution::where('id',$solutionId)->where('solutionUser_id',$myId)->exists();
+        
+        return view('solutions.detail')->with('title',$items)->with('favoBool',$favoBool)->with('favoCount',$favoCount)->with('mySolutionBool',$mySolutionBool);
              
    }
 
-   public function apply(){
-        \App\Solution::where('id', '10')->update(['apply_flag' => '1']);
+   public function apply(Request $request){
+        $solutionId = $request->session()->get('solutionId');
+        $myId = $request->session()->get('userid');
+        \App\Solution::where('id', $solutionId)->update(['apply_flag' => '1','resolutionUser_id'=>$myId]);
+        $request->session()->forget('solutionId');
         return redirect()->action('MichelController@top');
    }
+
+   public function searchResult(Request $request)
+    {
+        
+        if(isset($request->category))
+        {
+            $cate = $request->category;
+            $myId = $request->session()->get('userid');
+            $items = Solution::where('solutionUser_id','<>',$myId)->where('apply_flag',0)->where('category_id', $cate)->get();
+            $cateName = Category::where('id',$cate)->first()->name;
+            if($items->count() > 0){
+                return view('solutions.searchResult', ['items' => $items, 'word' => $cateName]);
+            }else{
+                return view('solutions.searchResult',['word' => $cateName]);
+            }
+            
+        }else{
+            $search =  $request->search;
+            $myId = $request->session()->get('userid');
+            $items = [];
+            if(isset($search)){
+                $search = mb_convert_kana($search, 's','utf-8');
+                $data = preg_split("/[\s]+/", $search);
+                $items = Solution::where('solutionUser_id','<>',$myId)->where('apply_flag',0)
+                                    ->groupBy('solutionUser_id', 'title', 'created_at')
+                                    ->wordSearch($data);
+                
+            }
+            if($items->count() > 0){
+                return view('solutions.searchResult', ['items' => $items, 'word' => $search]);
+            }else{
+                return view('solutions.searchResult',['word' => $search]);
+            }
+        }
+    }
 }

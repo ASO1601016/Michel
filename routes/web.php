@@ -17,10 +17,7 @@ Route::get('/', function () {
     return view('hello.landing');
 });
 
-//確認
-Route::get('searchResult', function () {
-    return view('hello.searchResult');
-});
+
 
 Route::get('regist','HelloController@regist');
 
@@ -79,8 +76,9 @@ Route::middleware(AuthMiddleware::class)->group(function(){
 
 
     // 溝越
-
-
+    Route::post('searchResult', 'SolutionController@searchResult');
+    Route::get('favorite', 'FavoriteController@index');
+    Route::get('favoComplete','FavoriteController@favoComplete');
 
 });
 

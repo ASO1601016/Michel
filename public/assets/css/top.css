@@ -1,5 +1,7 @@
 body{
     color:#444444;
+    z-index: 1;
+    position: relative;
 }
 #title{
     font-weight:bold;
@@ -20,21 +22,42 @@ body{
     position:absolute;
     transform:translate(-50%,-50%);
 }
+.card-body{
+    height: 20%;
+}
 .card-title{
-    height: 6.25rem;
+    height:15vh;
+    font-size: 0.5vh;
+    padding: 2vh;
 }
 i{
     color:#444444;   
 }
+.content-title{
+    font-weight:bold; 
+}
+.content-sub{
+ font-size: 0.5rem;   
+}
+.text-muted{
+    font-size: 0.5rem;
+}
 button{
     color:white;
-    background-image:linear-gradient(#81C784 0%,#66BB6A 100%);
+    
 }
 .btn{
     color:white;
-    padding: 2rem 3rem 2rem 3rem;
-    margin: 1.5rem;
+    padding: 0.5rem;
+    margin: 0.2rem;
     font-weight:bold;
     width: 100%;
-    font-size: 2rem;
+    font-size: 0.1vh;
+    background-image:linear-gradient(#81C784 0%,#66BB6A 100%);
+}
+.col-4,.col-6{
+    padding: 0.5rem;
+}
+.carousel-control-next,carousel-control-prev{
+    width: 10%;
 }
