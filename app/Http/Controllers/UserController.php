@@ -199,7 +199,7 @@ class UserController extends Controller
         }
 
         $myId =  $request->session()->get('userid'); //自分のid
-        $dmLists = $solution->where('apply_flag',1)->where(function($query) use($myId){$query->where('solutionUser_id',$myId)->orWhere('resolutionUser_id',$myId);})->get();
+        $dmLists = $solution->where('apply_flag',1)->where('comp_flag',0)->where(function($query) use($myId){$query->where('solutionUser_id',$myId)->orWhere('resolutionUser_id',$myId);})->get();
         
         foreach ($dmLists as $dmList) {
             $lastDm = $dm->where('id_Solution',$dmList->id)->orderBy('id', 'desc')->first();
