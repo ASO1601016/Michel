@@ -90,9 +90,9 @@ class SolutionController extends Controller
         //$items = \App\Solution::where('id','30')->first();
         $request->session()->put('solutionId', $request->id);
         $solutionId = $request->id;
-        $items = \DB::table('Solutions')
-            ->join('Users', 'Solutions.solutionUser_id', '=', 'Users.id')
-            ->where('Solutions.id',$solutionId)->first();
+        $items = \DB::table('solutions')
+            ->join('users', 'solutions.solutionUser_id', '=', 'users.id')
+            ->where('solutions.id',$solutionId)->first();
         
         $mySolutionBool = solution::where('id',$solutionId)->where('solutionUser_id',$myId)->exists();
         
