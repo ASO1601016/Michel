@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class HelloController extends Controller{
     public function regist(){
-        $School = new \App\School;
+        $School = new \App\school;
         $items = $School->all();
         // $item = DB::select('select * from people');
         // return view('hello.index',['items' => $item]);
@@ -52,7 +52,7 @@ class HelloController extends Controller{
 
         // $data_db DB保存用
         // $data 画面表示用
-        $School = new \App\School;
+        $School = new \App\school;
 
         $id = $request->number;
         $password = $request->password;

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Solution;
-use App\Category;
-use App\User;
+use App\solution;
+use App\category;
+use App\user;
 use Illuminate\Support\Facades\Storage;
 
 class MichelController extends Controller
@@ -29,7 +29,7 @@ class MichelController extends Controller
                             ->groupBy('solutionUser_id', 'title', 'created_at')
                             ->orderBy('created_at', 'desc')
                             ->take(3)->get();
-        $categories = Category::all();
+        $categories = category::all();
         if($newItems->count() > 0 && $limitItems->count() > 0){
             return view('solutions.index',['newItems' => $newItems, 'limitItems' => $limitItems, 'categories' => $categories]);
         }else if($newItems->count() > 0){

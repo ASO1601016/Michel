@@ -20,7 +20,7 @@ class UserController extends Controller
         $this->validate($request,$validate_rule);
 
         $solution = new \App\solution;
-        $user = new \App\User;
+        $user = new \App\user;
 
         //達成フラグを1に
         $solutionId = $request->session()->get('solutionId');
@@ -101,7 +101,7 @@ class UserController extends Controller
         $dm = new \App\directMail;
         $message = new \App\message;
         $solution = new \App\solution;
-        $user = new \App\User;
+        $user = new \App\user;
         if(isset($request->id)){
             $request->session()->put('solutionId', $request->id);
         }
@@ -213,7 +213,7 @@ class UserController extends Controller
     }
 
     public function edit(Request $request){
-        $User = new \App\User;
+        $User = new \App\user;
         $id = $request->session()->get('userid');
 
         if(isset($request->icon)){
@@ -244,7 +244,7 @@ class UserController extends Controller
         ];
         $this->validate($request,$validate_rule);
         
-        $User = new \App\User;
+        $User = new \App\user;
         $name = $request->name;
         $intro = $request->intro;
         $id = $request->session()->get('userid');
@@ -255,9 +255,9 @@ class UserController extends Controller
     }
 
     public function mypage(Request $request){
-        $User = new \App\User;
-        $School = new \App\School;
-        $solution = new \App\Solution;
+        $User = new \App\user;
+        $School = new \App\school;
+        $solution = new \App\solution;
         $category = new \App\category;
 
         $id = $request->session()->get('userid');
@@ -308,7 +308,7 @@ class UserController extends Controller
         $this->validate($request,$validate_rule);
 
 
-        $User = new \App\User;
+        $User = new \App\user;
         $password = $request->get('password');
         $id = $request->get('id');
         
@@ -332,7 +332,7 @@ class UserController extends Controller
 
         if($action === '登録する') {
             
-            $User = new \App\User;
+            $User = new \App\user;
 
             
     
