@@ -27,11 +27,12 @@ class UserController extends Controller
         $userid = $request->session()->get('userid');
         $solution->where('id',$solutionId)->update(['comp_flag'=>1]);
         
-
+        $youId = $solution->where('id',$solutionId)->first()->resolutionUser_id;
+        
         //評価計算
         $assessment = $request->star;
-        $completeCount = $solution->where('solutionUser_id',$userid)->where('comp_flag',1)->count();
-        $status = $user->where('id',$userid)->first()->status;
+        $completeCount = $solution->where('resolutionUser_id',$youId)->where('comp_flag',1)->count();
+        $status = $user->where('id',$youId)->first()->status;
         
         if($status != 0){ 
             // {dbの評価 * (企画終了数 - 1）+ 新しい評価 } / 企画終了数
@@ -47,7 +48,7 @@ class UserController extends Controller
         $status = number_format($status,1,null,'');
 
         // print_r($status);
-        $user->where('id',$userid)->update(['status'=>$status]);
+        $user->where('id',$youId)->update(['status'=>$status]);
         // return view('hello.temp');
         return redirect()->action('MichelController@top');
     }
