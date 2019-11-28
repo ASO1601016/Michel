@@ -81,10 +81,19 @@ $(document).ready(function(){
         </div>
     </div>
 
-    <script>
-        setTimeout(function() {
+    <script type="text/javascript">
+            setTimeout(function() {
                 window.scroll(0,$(.sita).height());
             },0);
+            
+            $(function(){
+                $('[type="submit"]').click(function(){
+                    $(this).prop('disabled',true);//ボタンを無効化する
+                    $(this).closest('form').submit();//フォームを送信する
+                });
+            });
+
+            
     </script>
     
 @endsection

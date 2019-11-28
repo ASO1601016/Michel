@@ -249,7 +249,7 @@ class UserController extends Controller
         $name = $request->name;
         $intro = $request->intro;
         $id = $request->session()->get('userid');
-        // a
+        // shdtykuydjytj7dktuj6kyddjytdk
         $User->where('id',$id)->update(['name'=>$name]);
         $User->where('id',$id)->update(['userDetail'=>$intro]);
         return redirect()->action('UserController@mypage');
