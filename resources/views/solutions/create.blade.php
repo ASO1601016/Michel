@@ -106,7 +106,7 @@
         <div class="form-image">
           <h5>
             <strong>
-              <label for="image">画像</label> <span class="text-muted">任意</span>
+              <label for="image">企画画像</label> <span class="text-muted">任意</span>
             </strong>
           </h5>
           <div class="container-fluid p-2">
@@ -114,6 +114,9 @@
             <div class="preview" />
           </div>
         </div>
+        @if ($errors->has('image'))
+            <div class="bg-danger text-white mt-2 pl-1 border border-danger rounded ib"><b>{{$errors->first('image')}}</b></div>
+        @endif
         
 
         <div class="form-submit">

@@ -122,6 +122,7 @@ return [
         'category_id'=>'カテゴリ',
         'grade'=>'募集人数',
         'tomorrow-1day'=>'明日',
+        'image'=>'企画画像',
     ],
 
 ];

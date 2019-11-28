@@ -30,6 +30,7 @@ class SolutionController extends Controller
             'category_id' => 'required',
             'grade' => 'required',
             'limit' => 'required|after:tomorrow-1day',
+            'image' => 'image',
         ];
         
         $this->validate($request,$validate_rule);
