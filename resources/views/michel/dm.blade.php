@@ -67,7 +67,7 @@ $(document).ready(function(){
                     <form method="post" action="./dmSubmit" enctype="multipart/form-data" style="display:inline">
                         {{ csrf_field() }}
                             <textarea maxlength="128" style="vertical-align:top;width:40%;" placeholder="メッセージを入力" name="message" rows="1" class="text-area send-message border-dark rounded col-xs-4"></textarea>
-                            <input type="submit"  class="justify-content-center border ml-1 col-xs-4 rounded" style="vertical-align: top;" value="送信">
+                            <input type="submit" id="sousin" class="justify-content-center border ml-1 col-xs-4 rounded" style="vertical-align: top;" value="送信">
                     </form>
                     @if ($flg)
                     
@@ -88,7 +88,7 @@ $(document).ready(function(){
     </script>
     <script type="text/javascript">
         $(function(){
-            $('[type="submit"]').click(function(){
+            $('#sousin').click(function(){
                 $(this).prop('disabled',true);//ボタンを無効化する
                 $(this).closest('form').submit();//フォームを送信する
             });
