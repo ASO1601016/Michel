@@ -59,7 +59,7 @@
                                             <p class="card-title bg-light">{{$newItems[$j+$i]->title}}</p>
                                             <form method="get" width="100%" name="form{{$newItems[$j+$i]->id}}" action="detail">
                                                 <input type="hidden" name="id" value="{{$newItems[$j+$i]->id}}">
-                                                <button style="width:100%;" class="p-0" href="javascript:form{{$newItems[$j+$i]->id}}.submit()">
+                                                <button style="width:100%;appearance: none;-webkit-appearance: none;" class="p-0" href="javascript:form{{$newItems[$j+$i]->id}}.submit()">
                                                     <img class="img shadow-sm w-75" src="storage/image/shousai.png" alt="詳細へ">
                                                 </button>
                                             </form>
