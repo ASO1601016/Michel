@@ -67,9 +67,9 @@
 
                 <!-- 学年 -->
                 <div class="row">
-                    <div class="form-group col-3">
+                    <div class="form-group col-4">
                         <label>学年</label><span class="text-danger">　必須</span>
-                        <select name="grade" class="form-control custom-select">
+                        <select name="grade" class="form-control custom-select w-75">
                             <option value="1" @if(old('grade')=='1') selected  @endif>1</option>
                             <option value="2" @if(old('grade')=='2') selected  @endif>2</option>
                             <option value="3" @if(old('grade')=='3') selected  @endif>3</option>
@@ -83,9 +83,9 @@
                 
                 <!-- 性別 -->
                 <div class="row">
-                    <div class="form-group col-3">
+                    <div class="form-group col-4">
                         <div class="mb-2">性別<span class="text-muted">　任意</span></div>
-                        <select name="sex" class="form-control custom-select">
+                        <select name="sex" class="form-control custom-select " style="">
                             <option value="未設定" @if(old('sex')=='未設定') selected  @endif>未設定</option>
                             <option value="男" @if(old('sex')=='男') selected  @endif>男</option>
                             <option value="女" @if(old('sex')=='女') selected  @endif>女</option>
@@ -98,7 +98,7 @@
                 <!-- 自己紹介 -->
                 <div class="form-group mt-3">
                     <label>自己紹介</label><span class="text-muted">　任意</span>
-                    <textarea name="intro" id="textarea" class="form-control">{{ old('intro') }}</textarea>
+                    <textarea name="intro" id="textarea" class="form-control selfintro">{{ old('intro') }}</textarea>
                     @if ($errors->has('intro'))
                         <div class="bg-danger text-white mt-2 pl-1 border border-danger rounded ib"><b>{{$errors->first('intro')}}</b></div>
                     @endif
@@ -109,6 +109,11 @@
                 <div class="custom-file">
                     <input type="file" name="icon" class="custom-file-input" id="customFile">
                     <label class="custom-file-label">ファイル選択...</label>
+                    <script>
+                        $('.custom-file-input').on('change',function(){
+                            $(this).next('.custom-file-label').html($(this)[0].files[0].name);
+                        })
+                    </script>
                     @if ($errors->has('icon'))
                         <div class="bg-danger text-white mt-2 pl-1 border border-danger rounded ib"><b>{{$errors->first('icon')}}</b></div>
                     @endif
