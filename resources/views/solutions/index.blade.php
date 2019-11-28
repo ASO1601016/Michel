@@ -59,7 +59,7 @@
                                             <p class="card-title">{{$newItems[$j+$i]->title}}</p>
                                             <form method="get" width="100%" name="form{{$newItems[$j+$i]->id}}" action="detail">
                                                 <input type="hidden" name="id" value="{{$newItems[$j+$i]->id}}">
-                                                <button style="" class="btn btn-warning mx-auto d-block" href="javascript:form{{$newItems[$j+$i]->id}}.submit()">
+                                                <button class="btn btn-warning mx-auto d-block" href="javascript:form{{$newItems[$j+$i]->id}}.submit()">詳細へ
                                                 </button>
                                             </form>
                                         </div>
