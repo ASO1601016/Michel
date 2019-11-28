@@ -232,7 +232,7 @@ class UserController extends Controller
         $display = $User->where('id',$id)->first();
         $data = [
             'name'=>$display->name,
-            'detail'=>$display->detail,
+            'detail'=>$display->userDetail,
             'image'=>$display->userImage,
         ];
 
@@ -251,7 +251,7 @@ class UserController extends Controller
         $id = $request->session()->get('userid');
 
         $User->where('id',$id)->update(['name'=>$name]);
-        $User->where('id',$id)->update(['detail'=>$intro]);
+        $User->where('id',$id)->update(['userDetail'=>$intro]);
         return redirect()->action('UserController@mypage');
     }
 
@@ -276,7 +276,7 @@ class UserController extends Controller
             'name'=>$display->name,
             'school'=>$schoolName,
             'sex'=>$display->sex,
-            'detail'=>$display->detail,
+            'detail'=>$display->userDetail,
             'status'=>$display->status,
             'image'=>$display->userImage,
             'comp'=>$solutionComp->count(),
@@ -370,7 +370,7 @@ class UserController extends Controller
             $User->id_School = $school;
             $User->grade = $grade;
             $User->sex = $sex;
-            $User->detail = $intro;
+            $User->userDetail = $intro;
             $User->status = 0;
             $User->userImage = $read_path;
             
