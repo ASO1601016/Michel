@@ -81,19 +81,17 @@ $(document).ready(function(){
         </div>
     </div>
 
-    <script type="text/javascript">
+    <script>
             setTimeout(function() {
                 window.scroll(0,$(.sita).height());
             },0);
-            
-            $(function(){
-                $('[type="submit"]').click(function(){
-                    $(this).prop('disabled',true);//ボタンを無効化する
-                    $(this).closest('form').submit();//フォームを送信する
-                });
-            });
-
-            
     </script>
-    
+    <script type="text/javascript">
+        $(function(){
+            $('[type="submit"]').click(function(){
+                $(this).prop('disabled',true);//ボタンを無効化する
+                $(this).closest('form').submit();//フォームを送信する
+            });
+        });
+    </script>
 @endsection
