@@ -23,12 +23,8 @@ body{
     transform:translate(-50%,-50%);
 }
 .card-body{
-    height: 20%;
 }
 .card-title{
-    height:15vh;
-    font-size: 0.5vh;
-    padding: 2vh;
 }
 i{
     color:#444444;   
