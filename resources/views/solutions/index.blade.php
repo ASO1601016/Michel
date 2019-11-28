@@ -157,7 +157,7 @@
                     @csrf
                     @foreach ($categories as $category)
                         <div class="col-4">
-                            <button class="btn shadow-sm" name="category" value="{{$category->id}}">{{$category->name}}</button>
+                            <button class="btn shadow-sm ctgrbtn" name="category" value="{{$category->id}}">{{$category->name}}</button>
                         </div>
                     @endforeach
                 </div>
