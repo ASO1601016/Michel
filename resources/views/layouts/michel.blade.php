@@ -40,7 +40,7 @@
       <ul class="drawer-menu">
         
         <li class="text-center">
-            <button class="btn programbtn rounded m-3 p-2" style="color:white;background: linear-gradient(180deg, #FFC778, #ff598f);" onclick="location.href='./solution'">
+            <button class="btn programbtn rounded m-3 mx-auto d-block w-75" style="color:white;background: linear-gradient(180deg, #FFC778, #ff598f);" onclick="location.href='./solution'">
                 <i class="fa fa-pencil-square-o" aria-hidden="true" style="color:white;"></i>投稿する
             </button>
         </li>
