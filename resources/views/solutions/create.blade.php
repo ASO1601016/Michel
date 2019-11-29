@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{{ asset('/assets/css/submit.css') }}">
 @endsection
 @section('content')
+
     <form method="post" action="{{ route('solutions.create') }}" enctype="multipart/form-data">
  @csrf
     <div class="wrap">
@@ -90,14 +91,18 @@
             <div class="bg-danger text-white mt-2 pl-1 border border-danger rounded ib"><b>{{$errors->first('grade')}}</b></div>
         @endif
 
+        <div class="form-group">
+          <h5>
+            <strong>
+              <label for="image">締め切り日</label> <span class="text-danger">必須</span>
+            </strong>
 
-        <h5>
-          <strong>
-            <label for="image">締め切り日</label> <span class="text-danger">必須</span>
-          </strong>
-        </h5>
-        <div class="form-group mb-3">
-            <input type="date" name="limit" value="{{ old('limit') }}">
+          </h5>
+          <div class="pl-0 mb-3 col-6">
+              <input id="date1" class="form-control" name="limit" type="text" value="{{ old('limit') }}" />
+          </div>
+          <div class="text-small">
+          </div>
         </div>
         @if ($errors->has('limit'))
             <div class="bg-danger text-white mt-2 pl-1 border border-danger rounded ib"><b>{{$errors->first('limit')}}</b></div>
@@ -126,4 +131,5 @@
       </div>
     </div>
 </form>
+
 @endsection
