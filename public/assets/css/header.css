@@ -63,5 +63,6 @@ i{
     font-weight:bold;
 }
 .titlebtn{
-    appearance:none;
+    border: none;
+    background-color: #BBDEFB;
 }
