@@ -30,7 +30,11 @@
                 </h5>
                 <div class="container-fluid pl-0 my-2">
                     <!--Usersテーブルから引っ張る-->
-                    <img src="{{ $title->userImage }}" class="rounded-circle" width="65" height="65">
+                    @empty ($title->userImage)
+                        <img src="storage/icon/me.png" class="rounded-circle" width="65" height="65">
+                    @else
+                        <img src="{{ $title->userImage }}" class="rounded-circle" width="65" height="65">
+                    @endempty
                     <span class="text-middle">{{ $title->name }}
                         <time class="text-muted">
                             {{ $title->sex }}

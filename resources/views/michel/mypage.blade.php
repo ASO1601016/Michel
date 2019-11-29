@@ -4,8 +4,8 @@
     <link rel="stylesheet" href="{{ asset('/assets/css/mypage.css') }}">
 @endsection
 @section('content')
-    
-<div class="wrap bg-light">
+
+<div class="wrap bg-light" style="min-height:100%;">
 
     <h4 class="container-fluid text-center border p-2 m-0">
         <div class="text-small">
