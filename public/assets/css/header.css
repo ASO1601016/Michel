@@ -58,4 +58,10 @@ header{
 i{
     margin-right: 1vh;
 }
-
+.programbtn{
+    color:white;
+    font-weight:bold;
+}
+.titlebtn{
+    appearance:none;
+}
