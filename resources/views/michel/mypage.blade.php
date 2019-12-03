@@ -55,7 +55,7 @@
                     <div class="row boader mx-1" style="background:white;text-decoration: none;">
                         <div class="col-3">
                             <!--企画の画像-->
-                            <div class="w-100 mt-3 mb-3" style="position:relative; padding-bottom:100%;">
+                            <div class="w-100 mt-3 mb-3" style="position:relative; padding-bottom:100%;overflow:hidden;">
                                 <div class="w-100" style="position:absolute; top:50%;">
                                     @empty ($recru->image)
                                         <img class="w-100 rounded" src="storage/image/solution.jpg" style="position:absolute;transform: translate(-50%,-50%);">
@@ -89,7 +89,7 @@
                     <div class="row boader mx-1" style="background:white;text-decoration: none;">
                         <div class="col-3">
                             <!--企画の画像-->
-                            <div class="w-100 mt-3 mb-3" style="position:relative; padding-bottom:100%;">
+                            <div class="w-100 mt-3 mb-3" style="position:relative; padding-bottom:100%;overflow:hidden;">
                                 <div class="w-100" style="position:absolute; top:50%;">
                                     @empty ($co->image)
                                         <img class="w-100 rounded" src="storage/image/solution.jpg" style="position:absolute;transform: translate(-50%,-50%);">
