@@ -51,6 +51,7 @@
         @foreach ($recruit as $recru)
             <form method="get" width="100%" name="form{{$recru->id}}" action="detail"> 
                 <input type="hidden" name="id" value="{{$recru->id}}">
+                <div class="container">
                 <button style="width:100%;" class="p-0" href="javascript:form{{$recru->id}}.submit()">
                     <div class="row boader mx-1" style="background:white;text-decoration: none;">
                         <div class="col-3">
@@ -72,6 +73,7 @@
                         </div>
                     </div>
                 </button>
+                </div>
             </form>
         @endforeach
     @else
