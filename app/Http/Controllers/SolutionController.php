@@ -116,7 +116,7 @@ class SolutionController extends Controller
         {
             $cate = $request->category;
             $myId = $request->session()->get('userid');
-            $items = solution::where('solutionUser_id','<>',$myId)->where('apply_flag',0)->where('category_id', $cate)->get();
+            $items = solution::where('solutionUser_id','<>',$myId)->where('apply_flag',0)->where('category_id', $cate)->groupBy('solutionUser_id', 'title', 'created_at')->get();
             $cateName = category::where('id',$cate)->first()->name;
             if($items->count() > 0){
                 return view('solutions.searchResult', ['items' => $items, 'word' => $cateName]);

@@ -23,22 +23,22 @@
 
     <div class="icon text-dark ml-2 small-font">
         <div class="title"><strong>{{$name}}</strong></div>
-        <div class="text-middle"><time>{{$school}}</time>／性別：{{$sex}}</div>
-        <div class="text-middle"><time>企画完了数：{{$comp}}</time>／評価：⭐️{{$status}}</div>
+        <div class="text-middle"><time>{{$school}}</time> / 性別：{{$sex}}</div>
+        <div class="text-middle"><time>企画完了数：{{$comp}}</time> / 評価：⭐️{{$status}}</div>
     </div>
     <div class="border-bottom border-dark p-1"></div>
 
     <!-- 自己紹介 -->
     <div class="container-fluid px-0 pt-2">
         <strong class="pl-1 py-2">自己紹介</strong>
-        <div class="pl-1">
+        <div class="m-2" style="word-break: break-all;">
             @if(!$detail)
                 未設定
             @else
                 {!! nl2br(e($detail)) !!}
             @endif
         </div>
-        <div class="border-bottom border-dark py-2"></div>
+        <div class="border-bottom border-dark py-1"></div>
     </div>
 
     <!-- ページ編集ボタン -->
