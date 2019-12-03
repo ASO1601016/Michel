@@ -22,7 +22,7 @@
                 </div>
             </div>
             
-            <div class="container-fluid bg-white mb-1 mt-4 pt-3 pb-2">
+            <div class="container-fluid bg-white mb-1 mt-4 pt-3 pb-2" style="word-break: break-all;">
                 <h5>
                     <strong>
                         {{ $title->title }}
@@ -50,7 +50,7 @@
             企画内容
         </div>
         {{-- 企画内容文表示 --}}
-        <div class="container-fluid bg-white py-2">
+        <div class="container-fluid bg-white py-2" style="word-break: break-all;">
             {!! nl2br(e($title->detail)) !!}
         </div>
         @if(!$mySolutionBool)

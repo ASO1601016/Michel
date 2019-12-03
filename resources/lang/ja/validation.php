@@ -43,11 +43,11 @@ return [
     'ip'                   => ':attributeを正しいIPアドレスにしてください。',
     'max'                  => [
         'numeric' => ':attributeは:max以下にしてください。',
-        'file'    => ':attributeは:max KB以下のファイルにしてください。.',
+        'file'    => '容量は:max KB以下のファイルにしてください。',
         'string'  => ':attributeは:max文字以下にしてください。',
         'array'   => ':attributeは:max個以下にしてください。',
     ],
-    'mimes'                => ':attributeは:valuesタイプのファイルにしてください。',
+    'mimes'                => '形式は:valuesのファイルにしてください。',
     'min'                  => [
         'numeric' => ':attributeは:min以上にしてください。',
         'file'    => ':attributeは:min KB以上のファイルにしてください。.',
@@ -123,6 +123,7 @@ return [
         'grade'=>'募集人数',
         'tomorrow-1day'=>'明日',
         'image'=>'企画画像',
+        'jpeg'=>'jpg',
     ],
 
 ];

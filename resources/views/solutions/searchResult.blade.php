@@ -9,7 +9,7 @@
     
     <!--検索キーワードの表示-->
     <div id="title">
-        <h2 class="title text-center" style="font-weight:bold;margin-top:10%;">検索キーワード：<br>{{$word}}</h2>
+        <h5 class="title text-center" style="font-weight:bold;margin-top:10%;">検索キーワード：<br>{{$word}}</h5>
     </div>
     @isset($items)
         <!--検索結果-->
@@ -59,7 +59,7 @@
 
     @else
     <div id="title">
-        <h2 class="title text-center" style="font-weight:bold;margin-top:10%;">見つかりませんでした</h2>
+        <h5 class="title text-center" style="font-weight:bold;margin-top:10%;">見つかりませんでした</h5>
     </div>
     @endisset
 </body>

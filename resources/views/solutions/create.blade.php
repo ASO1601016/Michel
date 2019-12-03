@@ -27,7 +27,7 @@
             このサービスのタイトルを入力してください。
           </div>
           <div class="form-group">
-            <input class="form-control" name="title" value="{{ old('title') }}" placeholder="例）昼の弁当買い出し代行承ります">
+            <input class="form-control" name="title" value="{{ old('title') }}" maxlength="30" placeholder="例）昼の弁当買い出し代行承ります">
           </div>
           @if ($errors->has('title'))
               <div class="bg-danger text-white mt-2 pl-1 border border-danger rounded ib"><b>{{$errors->first('title')}}</b></div>
@@ -42,7 +42,7 @@
           </strong>
         </h5>
         <div class="form-group">
-          <textarea class="form-control" name="detail" placeholder="例）サービスの内容、ユーザーのメリット、アピールしたい実績などを具体的に書いてください。">{{ old('detail') }}</textarea>   
+          <textarea class="form-control" name="detail" maxlength="128" placeholder="例）サービスの内容、ユーザーのメリット、アピールしたい実績などを具体的に書いてください。">{{ old('detail') }}</textarea>   
         </div>
         @if ($errors->has('detail'))
             <div class="bg-danger text-white mt-2 pl-1 border border-danger rounded ib"><b>{{$errors->first('detail')}}</b></div>

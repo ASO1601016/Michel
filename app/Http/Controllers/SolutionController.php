@@ -30,9 +30,9 @@ class SolutionController extends Controller
             'category_id' => 'required',
             'grade' => 'required',
             'limit' => 'required|after:tomorrow-1day',
-            'image' => 'image',
+            'image' => 'image|max:5000',
         ];
-        
+        // a
         $this->validate($request,$validate_rule);
 
        
@@ -135,6 +135,12 @@ class SolutionController extends Controller
                                     ->groupBy('solutionUser_id', 'title', 'created_at')
                                     ->wordSearch($data);
                 
+                $limit = 20;
+                if(mb_strlen($search) > $limit) { 
+                    $search = mb_substr($search,0,$limit);
+                    $search = $search."..." ;
+                }
+
             }
             if($items->count() > 0){
                 return view('solutions.searchResult', ['items' => $items, 'word' => $search]);

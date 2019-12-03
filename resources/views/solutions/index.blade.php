@@ -99,7 +99,7 @@
         @foreach($limitItems as $item)
             <div class="container-fluid mt-2 shadow-sm border">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-4 pt-0">
                     <!--企画の画像-->
                         <div class="image w-100 m-3 shadow-sm">
                             <div class="inner w-100">
@@ -114,16 +114,16 @@
                     <div class="col-8">
                     <!--タイトル&詳細-->
                         <div class="container-fluid m-3 p-3 bg-light" style="width:95%;">
-                            <p class="content-title">{{$item->title}}</p>
-                            <p class="content-sub">{{$item->detail}}</p>
+                            <p class="content-title"  style="word-break: break-all;">{{$item->title}}</p>
+                            <p class="content-sub"  style="word-break: break-all;">{{$item->detail}}</p>
                         </div>
                     </div>
                     <!--カテゴリ表示と詳細ボタン表示-->
-                    <div class="container-fluid m-3">
+                    <div class="container-fluid">
                         <div class="row">
-                            <div class="col-8">
-                                <a class="text-muted">{{$item->category->name}}</a>
-                            </div>    
+                            
+                            <div class="col-6 pl-4"><p style="color:gray;"><i class="fa fa-tag" aria-hidden="true"></i>{{$item->category->name}}</p></div>
+                            <div class="col-2"></div>
                             <div class="col-4" style="text-align:right;">
                                 <form method="get" width="100%" name="form{{$item->id}}" action="detail">
                                     <input type="hidden" name="id" value="{{$item->id}}">

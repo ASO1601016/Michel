@@ -30,7 +30,7 @@ class HelloController extends Controller{
             'grade' => 'required|between:1,4',
             'sex' => 'in:"未設定","男","女"',
             'intro' => 'string|nullable',
-            'icon' => 'image'
+            'icon' => 'image|max:5000'
         ];
         $this->validate($request,$validate_rule);
 
