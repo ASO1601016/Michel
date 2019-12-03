@@ -36,6 +36,12 @@ div{
     z-index: 1;
 }
 */
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+
 header{
     background-color: #BBDEFB;
 }
