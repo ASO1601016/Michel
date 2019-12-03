@@ -34,7 +34,7 @@
                                 @break
                             @endif
                                 <!--企画-->
-                                <div class="col-6">
+                                <div class=" col-6">
                                     <div class="card">
                                         <!--企画画像-->
                                         @if($j == 0)
@@ -56,10 +56,12 @@
 
                                         <!--企画内容-->
                                         <div class="card-body text-center">
-                                            <p class="content-title">{{$newItems[$j+$i]->title}}</p>
+                                            <p class="content-title" style="height:65px;">{{$newItems[$j+$i]->title}}</p>
+                                        </div>
+                                        <div class="p-0" style="height: auto;">
                                             <form method="get" width="100%" name="form{{$newItems[$j+$i]->id}}" action="detail">
                                                 <input type="hidden" name="id" value="{{$newItems[$j+$i]->id}}">
-                                                <button class="btn btn-warning mx-auto d-block" href="javascript:form{{$newItems[$j+$i]->id}}.submit()">詳細へ
+                                                <button class="w-75 btn btn-warning mx-auto d-block" href="javascript:form{{$newItems[$j+$i]->id}}.submit()">詳細へ
                                                 </button>
                                             </form>
                                         </div>
