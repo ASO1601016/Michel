@@ -52,10 +52,11 @@
             <form method="get" width="100%" name="form{{$recru->id}}" action="detail"> 
                 <input type="hidden" name="id" value="{{$recru->id}}">
                 <button style="width:100%;" class="p-0" href="javascript:form{{$recru->id}}.submit()">
+                    <div class="container">
                     <div class="row boader mx-1" style="background:white;text-decoration: none;">
                         <div class="col-3">
                             <!--企画の画像-->
-                            <div class="w-100 mt-3 mb-3" style="position:relative; padding-bottom:100%;">
+                            <div class="w-100 mt-3 mb-3" style="position:relative; padding-bottom:100%;overflow:hidden;">
                                 <div class="w-100" style="position:absolute; top:50%;">
                                     @empty ($recru->image)
                                         <img class="w-100 rounded" src="storage/image/solution.jpg" style="position:absolute;transform: translate(-50%,-50%);">
@@ -70,6 +71,7 @@
                             <div class="text-title text-left mt-2 text-dark">{{$recru->title}}</div>
                             <div class="text-muted text-left" style="font-size:80%;">{{$category[$recru->category_id-1]->name}}</div>
                         </div>
+                    </div>
                     </div>
                 </button>
             </form>
@@ -89,7 +91,7 @@
                     <div class="row boader mx-1" style="background:white;text-decoration: none;">
                         <div class="col-3">
                             <!--企画の画像-->
-                            <div class="w-100 mt-3 mb-3" style="position:relative; padding-bottom:100%;">
+                            <div class="w-100 mt-3 mb-3" style="position:relative; padding-bottom:100%;overflow:hidden;">
                                 <div class="w-100" style="position:absolute; top:50%;">
                                     @empty ($co->image)
                                         <img class="w-100 rounded" src="storage/image/solution.jpg" style="position:absolute;transform: translate(-50%,-50%);">
