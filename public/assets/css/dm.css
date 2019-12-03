@@ -169,8 +169,6 @@
 .btn-flat-simple {
     position: relative;
     display: inline-block;
-    font-weight: bold;
-    padding: 0.25em 0.5em;
     text-decoration: none;
     background: #ECECEC;
     transition: .4s;
@@ -178,4 +176,7 @@
 
 .a {
   text-decoration: none;
+}
+.container-fluid:-webkit-scrollbar {
+    display:none;
 }
