@@ -51,8 +51,8 @@
         @foreach ($recruit as $recru)
             <form method="get" width="100%" name="form{{$recru->id}}" action="detail"> 
                 <input type="hidden" name="id" value="{{$recru->id}}">
-                <div class="container">
                 <button style="width:100%;" class="p-0" href="javascript:form{{$recru->id}}.submit()">
+                    <div class="container">
                     <div class="row boader mx-1" style="background:white;text-decoration: none;">
                         <div class="col-3">
                             <!--企画の画像-->
@@ -72,8 +72,8 @@
                             <div class="text-muted text-left" style="font-size:80%;">{{$category[$recru->category_id-1]->name}}</div>
                         </div>
                     </div>
+                    </div>
                 </button>
-                </div>
             </form>
         @endforeach
     @else
