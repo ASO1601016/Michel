@@ -67,13 +67,13 @@ $(document).ready(function(){
                     <form method="post" action="./dmSubmit" enctype="multipart/form-data" style="display:inline">
                         {{ csrf_field() }}
                             <textarea maxlength="128" style="vertical-align:top;width:40%;" placeholder="メッセージを入力" name="message" rows="1" class="text-area send-message border-dark rounded col-xs-4"></textarea>
-                            <input type="submit" class="justify-content-center border ml-1 col-xs-4 rounded" style="vertical-align: top;" value="送信">
+                            <input type="submit" class="justify-content-center border ml-1 col-xs-4 rounded btn-flat-simple" style="vertical-align: top;" value="送信">
                     </form>
                     @if ($flg)
                     
                         <form method="post" action="./assessment" style="display: inline">
                             {{ csrf_field() }}
-                            <input type="submit" class="ml-1 mr-2 border col-xs-4" style="vertical-align: top;　font-size:10px;" value="企画を終了">
+                            <input type="submit" class="ml-1 mr-2 border col-xs-4 rounded btn-flat-simple" style="vertical-align: top;　font-size:10px;" value="企画を終了">
                         </form>
                     
                     @endif
