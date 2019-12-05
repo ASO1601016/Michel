@@ -31,7 +31,7 @@
                         
                         <div class="col-3">
                             <!--企画の画像-->
-                            <div class="w-100 mt-3 mb-3" style="position:relative; padding-bottom:100%;">
+                            <div class="w-100 mt-3 mb-3" style="position:relative; padding-bottom:100%; overflow:hidden;">
                                 <div class="w-100" style="position:absolute; top:50%;">
                                     @empty ($dmList->image)
                                         <img class="w-100 rounded" src="storage/image/me.png" style="position:absolute;transform: translate(-50%,-50%);">

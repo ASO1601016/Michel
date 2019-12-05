@@ -23,9 +23,7 @@
             @yield('header')
             <header class="sticky-top">
                 <h4 class="container-fluid text-center border p-2 m-0 bg-white text-orange">
-                    
                     MICHEL
-                    
                 </h4>
                 <div class="text-small gradient text-right text-white pr-1">
                     @yield('headerTitle')
@@ -37,7 +35,7 @@
         </div>
 
         <div class="footer text-center">
-            copyright 2019 Advancing.
+            copyright 2019 michel.
         </div>
     </body>
 </html>
