@@ -36,8 +36,8 @@
             @yield('content')
         </div>
 
-        <div class="footer">
-            copyright 2019 akasoo.
+        <div class="footer text-center">
+            copyright 2019 Advancing.
         </div>
     </body>
 </html>
