@@ -4,10 +4,10 @@
 @endsection
 
 @section('content')     
-        <div class="container">
-            <img src="storage/image/titlebrk.png" alt="title">
+        <div class="container-fluid text-center" style="margin-top:10%;">
+            <img src="storage/image/titlebrk.png" alt="title" width="50%">
         </div>
-        <div class="container-fluid" style="margin-top:30%;">
+        <div class="container-fluid mt-5">
             <div class="login-page">
                 <div class="form pw-form">
                     <form class="login-form pw-form-container" action="./login_check" method="post">
