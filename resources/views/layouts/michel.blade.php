@@ -79,7 +79,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid navcont">
             <div class="navbar-header d-block mx-auto">
-                <button class="titlebtn" onclick="location.href='./top'"><img src="storage/image/titlebrk.png"></button>
+                <button class="titlebtn" onclick="location.href='./top'"><img src="storage/image/titlebrk.png" width="25%"></button>
             </div>
         </div>     
     </nav>
