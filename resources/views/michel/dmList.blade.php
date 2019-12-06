@@ -4,7 +4,13 @@
 @endsection
 @section('title',"DM一覧")
 @section('content')
-
+<script>
+window.onpageshow = function(event) {
+	if (event.persisted) {
+		 window.location.reload();
+	}
+};
+</script>
 
 
 
@@ -22,7 +28,7 @@
             
                 
         <div class="container-fluid p-0" style="word-wrap: break-word;overflow-wrap: break-word;">
-            <form method="post" width="100%" name="form{{$dmList->id}}" action="./dm">
+            <form method="get" width="100%" name="form{{$dmList->id}}" action="./dm">
                 {{ csrf_field() }}
                 <input type="hidden" name="id" value="{{$dmList->id}}">
                 <button style="width:100%;" class="p-0 border" href="javascript:form{{$dmList->id}}.submit()">

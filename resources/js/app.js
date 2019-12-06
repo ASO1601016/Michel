@@ -19,7 +19,7 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('chats', require('./components/ExampleComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,4 +29,40 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    data: {
+        flg:'',
+        processing: false,
+        img: '',
+        message: '',
+        messages: []
+    },
+
+    // methods: {
+    //     send() {
+    //         const url = 'dmSubmit';
+    //         const params = { message: this.message };
+    //         axios.post(url, params)
+    //             .then((response) => {
+    //                 // 成功したらメッセージをクリア
+    //                 this.message = '';
+    //             });
+    //     },
+    //     getMessages() {
+    //         const url = 'dmGet';
+    //         axios.get(url)
+    //             .then((response) => {
+    //                 this.messages = response.data;
+    //             });
+    //     },
+    // },
+
+    // mounted() {
+    //     this.getMessages();
+    //     Echo.join('chat')
+    //     .listen('.server.created', (event) => {
+    //         alert("a");
+    //         this.getMessages(); // 全メッセージを再読込
+    //     });
+    // }
+    
 });
