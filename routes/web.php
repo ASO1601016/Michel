@@ -12,6 +12,7 @@
 */
 
 use App\Http\Middleware\AuthMiddleware;
+use App\Events\MessageCreated;
 
 Route::get('/', function () {
     return view('hello.landing');
@@ -47,11 +48,17 @@ Route::middleware(AuthMiddleware::class)->group(function(){
 
     Route::get('dmList','UserController@dmList');
 
-    Route::post('dm','UserController@dm');
+    Route::get('imgGet','UserController@imgGet');
+
+    // Route::post('dm','UserController@dm');
 
     Route::get('dm','UserController@dm');
 
     Route::post('dmSubmit','UserController@dmSubmit');
+
+    Route::get('dmGet','UserController@dmGet');
+
+    Route::get('flgGet','UserController@flgGet');
 
     Route::post('assessment','UserController@assessment');
 
@@ -59,7 +66,12 @@ Route::middleware(AuthMiddleware::class)->group(function(){
 
     Route::post('assessmentComplete','UserController@assessmentComplete');
 
+    
 
+    // Route::get('tasks', function () {
+    //     $task = "a"; 
+    //     event(new MessageCreated($task));
+    // });
 
 
     // 村瀬

@@ -1,6 +1,10 @@
 <html>
     <head>
-        <meta name="viewport" content="width=device-width">
+        @php
+            setcookie('hoge', 'fuga', time()+3600, '/; SameSite=Strict', '', true, true);
+        @endphp
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="viewport" content="width=device-width,user-scalable=no">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         
@@ -20,6 +24,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+        
         <script>
             jQuery(function($) {
                 $("#date1").datepicker();
@@ -29,11 +34,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
         <script>
-             
-            $(document).ready(function() {
-              $('.drawer').drawer();
+            jQuery(function($) {
+                $(document).ready(function() {
+                    $('.drawer').drawer();
+                });
             });
-
             
 
         </script>

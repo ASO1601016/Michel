@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
+use App\Events\MessageCreated;
 
 class UserController extends Controller
 {
@@ -86,17 +87,66 @@ class UserController extends Controller
         $message->message = $request->message;
         $message->datetime = date("Y-m-d H:i:s");
         $message->save();
-        
+
         $dm->id_Solution = $solutionId;
         $dm->fromUser_id = $myId;
         $dm->toUser_id	 = $youId;
         $dm->message_id = $lastMessageId;
         $dm->save();
 
-        return redirect()->action('UserController@dm');
+        event(new MessageCreated($message));
         
     }
 
+    public function imgGet(Request $request){
+        $dm = new \App\directMail;
+        $message = new \App\message;
+        $solution = new \App\solution;
+        $user = new \App\user;
+
+        $solutionId = $request->session()->get('solutionId');
+        $who = $solution->where('id',$solutionId)->first()->solutionUser_id;
+        $myId =  $request->session()->get('userid');
+        $flag = false;
+        if($who == $myId){
+            $youId = $solution->where('id',$solutionId)->first()->resolutionUser_id;
+            $flag = true;
+        }else{
+            $youId = $who;
+        }
+
+        $you = $user->where('id',$youId)->first();
+        $img = $you->userImage; 
+        if($flag){
+            $my = $user->where('id',$myId)->first();
+            $topImg = $my->userImage;
+            $name = $my->name;    
+        }else{
+            $topImg = $you->userImage;
+            $name = $you->name;
+        }
+        if(empty($img)){
+            $img = 'storage/icon/me.png';
+        }
+
+        return $img;
+    }
+
+    public function flgGet(Request $request){
+        $solution = new \App\solution;
+        $solutionId = $request->session()->get('solutionId'); //投稿id
+        
+        //投稿のユーザー名が自分かどうか判定
+        $who = $solution->where('id',$solutionId)->first()->solutionUser_id;
+        $myId =  $request->session()->get('userid');
+        $flg = false;
+        if($who == $myId){
+            $flg = true;
+        }
+        
+        return "$flg";
+
+    }
     //dm詳細表示
     public function dm(Request $request){
         $dm = new \App\directMail;
@@ -167,6 +217,7 @@ class UserController extends Controller
         $mergeMessage = array_merge_recursive($myMessage,$youMessage);
         array_multisort( array_map( "strtotime", array_column( $mergeMessage, 'datetime' ) ), SORT_ASC, $mergeMessage ) ;
         
+        //アイコン画像取得処理
         $you = $user->where('id',$youId)->first();
         $img = $you->userImage; 
         if($flag){
@@ -188,6 +239,75 @@ class UserController extends Controller
                                 ->with('flg',$flag); //企画終了ボタン表示判定
     }
 
+    public function dmGet(Request $request){
+        $dm = new \App\directMail;
+        $message = new \App\message;
+        $solution = new \App\solution;
+        $user = new \App\user;
+        
+        $solutionId = $request->session()->get('solutionId'); //投稿id
+        
+        //投稿のユーザー名が自分かどうか判定
+        $who = $solution->where('id',$solutionId)->first()->solutionUser_id;
+        $myId =  $request->session()->get('userid');
+        $flag = false;
+        if($who == $myId){
+            $youId = $solution->where('id',$solutionId)->first()->resolutionUser_id;
+            $flag = true;
+        }else{
+            $youId = $who;
+        }
+        $myMessageIds = $dm->where('id_Solution',$solutionId)
+            ->where('fromUser_id',$myId)
+            ->where('toUser_id',$youId)
+            ->get('message_id');
+
+        $youMessageIds = $dm->where('id_Solution',$solutionId)
+            ->where('toUser_id',$myId)
+            ->where('fromUser_id',$youId)
+            ->get('message_id');
+
+        $myMessage = [];
+        $youMessage = [];
+
+        //自分メッセージ : 0
+        //相手メッセージ　: 1
+        $count = 0;
+        foreach ($myMessageIds as $myMessageId) {
+        $msgRow = $message->where('id',$myMessageId->message_id)->first();
+        $msg = $msgRow->message;
+        $date = $msgRow->datetime;
+
+
+        $myMessage[$count] = array('message' => $msg,'datetime' => $date,'human' => 0);
+        $count += 1;
+        }
+
+        $count = 0;
+        foreach ($youMessageIds as $youMessageId) {
+
+        $msgRow= $message->where('id',$youMessageId->message_id)->first();
+        $msg = $msgRow->message;
+        $date = $msgRow->datetime;
+
+        $youMessage[$count] = array('message' => $msg,'datetime' => $date,'human' => 1);
+        $count += 1;
+        }
+
+        $mergeMessage = array_merge_recursive($myMessage,$youMessage);
+        array_multisort( array_map( "strtotime", array_column( $mergeMessage, 'datetime' ) ), SORT_ASC, $mergeMessage ) ;
+        
+        foreach ($mergeMessage as &$mM) {
+            $a = $mM['datetime'];
+            $mM['datetime'] = date("H:i", strtotime($a));
+            // 日付フォーマットするとこ
+            
+        }
+        unset($mM);
+        
+        return $mergeMessage;
+    }
+
     //dm一覧
     public function dmList(Request $request){
         $solution = new \App\solution;
@@ -202,7 +322,9 @@ class UserController extends Controller
         $myId =  $request->session()->get('userid'); //自分のid
         $dmLists = $solution->where('apply_flag',1)->where('comp_flag',0)->where(function($query) use($myId){$query->where('solutionUser_id',$myId)->orWhere('resolutionUser_id',$myId);})->get();
         
+        
         foreach ($dmLists as $dmList) {
+            
             $lastDm = $dm->where('id_Solution',$dmList->id)->orderBy('id', 'desc')->first();
             if(!empty($lastDm)){
                 $last = $msg->where('id',$lastDm->message_id)->first()->message;
