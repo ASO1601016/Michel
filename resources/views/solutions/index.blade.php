@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ asset('/assets/css/top.css') }}">
 @endsection
 
-
+@section('title',"トップ画面")
 @section('content')
     <div id="top">
         @isset($newItems)
