@@ -3,7 +3,7 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('/assets/css/top.css') }}">
 @endsection
-
+@section('title',"検索結果画面")
 @section('content')
 <body style="color:#444444;">
     
