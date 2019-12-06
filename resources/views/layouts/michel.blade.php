@@ -57,7 +57,7 @@
       <ul class="drawer-menu">
         
         <li class="text-center">
-            <button class="btn programbtn rounded m-3 mx-auto d-block w-75" style="color:white;background: linear-gradient(180deg, #FFC778, #ff598f);" onclick="location.href='./solution'">
+            <button class="btn programbtn m-3 mx-auto d-block w-75" onclick="location.href='./solution'">
                 <i class="fa fa-pencil-square-o" aria-hidden="true" style="color:white;"></i>投稿する
             </button>
         </li>
@@ -84,7 +84,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid navcont">
             <div class="navbar-header d-block mx-auto">
-                <button class="titlebtn" onclick="location.href='./top'"><img src="storage/image/titlebrk.png"></button>
+                <button class="titlebtn" onclick="location.href='./top'"><img src="storage/image/titlebrk.png" width="25%"></button>
             </div>
         </div>     
     </nav>

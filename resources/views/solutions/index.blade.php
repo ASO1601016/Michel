@@ -61,7 +61,7 @@
                                         <div class="p-0" style="height: auto;">
                                             <form method="get" width="100%" name="form{{$newItems[$j+$i]->id}}" action="detail">
                                                 <input type="hidden" name="id" value="{{$newItems[$j+$i]->id}}">
-                                                <button class="w-75 btn btn-warning mx-auto d-block" href="javascript:form{{$newItems[$j+$i]->id}}.submit()">詳細へ
+                                                <button class="detailbtn w-75 btn" href="javascript:form{{$newItems[$j+$i]->id}}.submit()">詳細へ
                                                 </button>
                                             </form>
                                         </div>
@@ -129,7 +129,7 @@
                             <div class="col-4" style="text-align:right;">
                                 <form method="get" width="100%" name="form{{$item->id}}" action="detail">
                                     <input type="hidden" name="id" value="{{$item->id}}">
-                                    <button class="btn btn-warning mx-auto d-block" href="javascript:form{{$item->id}}.submit()">詳細へ
+                                    <button class="btn detailbtn" href="javascript:form{{$item->id}}.submit()">詳細へ
                                     </button>
                                 </form>
                                 
