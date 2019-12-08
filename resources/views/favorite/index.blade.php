@@ -3,7 +3,7 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('/assets/css/top.css') }}">
 @endsection
-
+@section('title',"お気に入り画面")
 @section('content')
     <h2 class="title text-center" style="font-weight:bold;margin-top:10%;">お気に入り一覧</h2>
     <div class="mx-2">

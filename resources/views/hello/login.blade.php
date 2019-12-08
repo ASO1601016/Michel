@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="{{ asset('/assets/css/login.css') }}">
 @endsection
 
+@section('title',"ログイン画面")
 @section('content')     
         <div class="container-fluid text-center" style="margin-top:10%;">
             <img src="storage/image/titlebrk.png" alt="title" width="50%">
