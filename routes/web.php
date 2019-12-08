@@ -16,6 +16,7 @@ use App\Events\MessageCreated;
 
 Route::get('/', function () {
     return view('hello.landing');
+    // return redirect('https://mttk17.wixsite.com/michel');
 });
 
 

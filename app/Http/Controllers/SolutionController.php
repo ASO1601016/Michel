@@ -111,7 +111,7 @@ class SolutionController extends Controller
 
    public function searchResult(Request $request)
     {
-        
+        $categories = category::all();
         if(isset($request->category))
         {
             $cate = $request->category;
@@ -119,9 +119,9 @@ class SolutionController extends Controller
             $items = solution::where('solutionUser_id','<>',$myId)->where('apply_flag',0)->where('category_id', $cate)->groupBy('solutionUser_id', 'title', 'created_at')->get();
             $cateName = category::where('id',$cate)->first()->name;
             if($items->count() > 0){
-                return view('solutions.searchResult', ['items' => $items, 'word' => $cateName]);
+                return view('solutions.searchResult', ['categories' => $categories,'items' => $items, 'word' => $cateName]);
             }else{
-                return view('solutions.searchResult',['word' => $cateName]);
+                return view('solutions.searchResult',['categories' => $categories,'word' => $cateName]);
             }
             
         }else{
@@ -143,9 +143,9 @@ class SolutionController extends Controller
 
             }
             if($items->count() > 0){
-                return view('solutions.searchResult', ['items' => $items, 'word' => $search]);
+                return view('solutions.searchResult', ['categories' => $categories,'items' => $items, 'word' => $search]);
             }else{
-                return view('solutions.searchResult',['word' => $search]);
+                return view('solutions.searchResult',['categories' => $categories,'word' => $search]);
             }
         }
     }

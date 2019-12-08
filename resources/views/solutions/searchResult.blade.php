@@ -40,7 +40,7 @@
                     <div class="container-fluid m-3">
                         <div class="row">
                             <div class="col-8">
-                                <a class="text-muted">{{$item->category->name}}</a>
+                                <a class="text-muted">{{$categories[$item->category_id-1]->name}}</a>
                             </div>    
                             <div class="col-4" style="text-align:right;">
                                 <form method="get" width="100%" name="form{{$item->id}}" action="detail">

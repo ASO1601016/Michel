@@ -126,7 +126,7 @@
             this.flgGet();
             Echo.channel('chat')
             .listen('MessageCreated', (event) => {
-                
+                // console.log("あ");
                 this.getMessages(); // 全メッセージを再読込
                 this.scrollToEnd();
             });
