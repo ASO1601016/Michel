@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\favorite;
 use App\solution;
+use App\category;
 use Illuminate\Http\Request;
 
 class FavoriteController extends Controller
 {
     public function index(Request $request)
     {
+        $categories = category::all();
         $id = $request->session()->get('userid');
         $fav = favorite::select('solution_id')
                 ->where('user_id', $id)
@@ -17,7 +19,7 @@ class FavoriteController extends Controller
                 ->get();
         $items = solution::whereIn('id', $fav)
                 ->get();
-        return view('favorite.index', ['items'=>$items]);
+        return view('favorite.index', ['categories' => $categories,'items'=>$items]);
     }
 
     public function favoComplete(Request $request)
