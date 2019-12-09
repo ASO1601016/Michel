@@ -11,50 +11,43 @@
     <div class="wrap">
       <h4 class="container-fluid text-center border p-2">
         <div class="row">
-          <div class="col-12">
+          <div class="col-12" style="font-size:60%">
             投稿内容
           </div>
         </div>
       </h4>
       <div class="form">
         <div class="container-fluid form-title">
-          <h5>
-            <strong>
-              <label for="title">タイトル</label> <span class="text-danger">必須</span>
-            </strong>
-          </h5>
-          <div class="my-2">
-            このサービスのタイトルを入力してください。
-          </div>
+          <label for="title">タイトル</label> <span class="text-danger">必須</span>
           <div class="form-group">
             <input class="form-control" name="title" value="{{ old('title') }}" placeholder="例）昼の弁当買い出し代行承ります" maxlength="30">
           </div>
           @if ($errors->has('title'))
-              <div class="bg-danger text-white mt-2 pl-1 border border-danger rounded ib"><b>{{$errors->first('title')}}</b></div>
+            <div class="bg-danger text-white mt-2 pl-1 border border-danger rounded ib"><b>{{$errors->first('title')}}</b></div>
           @endif
         </div>
       </div>
       
       <div class="container-fluid mt-4 form-detail">
-        <h5>
-          <strong>
+        
+          
             <label for="detail" class="form-detail">サービス内容</label> <span class="text-danger">必須</span>
-          </strong>
-        </h5>
+          
+        
         <div class="form-group">
-          <textarea class="form-control" name="detail" placeholder="例）サービスの内容、ユーザーのメリット、アピールしたい実績などを具体的に書いてください。">{{ old('detail') }}</textarea>   
+          <textarea class="form-control" style="resize: none;" name="detail" placeholder="例）サービスの内容、ユーザーのメリット、アピールしたい実績などを具体的に書いてください。">{{ old('detail') }}</textarea>   
         </div>
         @if ($errors->has('detail'))
             <div class="bg-danger text-white mt-2 pl-1 border border-danger rounded ib"><b>{{$errors->first('detail')}}</b></div>
         @endif
       </div>
 
-      <div class="container-fluid mt-5 form-category_id form-category_id">
-        <h5>
-          <strong>
+      <div class="container-fluid form-category_id form-category_id">
+        
+          
             <label for="category_id" class="form-category_id">カテゴリ</label> <span class="text-danger">必須</span>
-          </strong>
-        </h5>
+          
+        
         <div class="form-group mb-3">
           <select name="category_id" class="form-control">
             <option value='' disabled selected style='display:none;'>選択してください</option>
@@ -67,11 +60,11 @@
           @endif
         </div>
 
-        <h5>
-          <strong>
+        
+          
             <label for="grade" class="form-grade">募集人数</label> <span class="text-danger">必須</span>
-          </strong>
-        </h5>
+          
+        
         <div class="form-group mb-3">
           <select name="grade" class="form-control">
             <option value='' disabled selected style='display:none;'>選択してください</option>
@@ -92,12 +85,12 @@
         @endif
 
         <div class="form-group">
-          <h5>
-            <strong>
+          
+            
               <label for="image">締め切り日</label> <span class="text-danger">必須</span>
-            </strong>
+            
 
-          </h5>
+          
           <div class="pl-0 mb-3 col-6">
               <input id="date1" class="form-control" name="limit" type="text" value="{{ old('limit') }}" />
           </div>
@@ -109,11 +102,11 @@
         @endif
 
         <div class="form-image">
-          <h5>
-            <strong>
+          
+            
               <label for="image">企画画像</label> <span class="text-muted">任意</span>
-            </strong>
-          </h5>
+            
+          
           <div class="container-fluid p-2">
             <input type="file" class="" name="image" value="{{ old('image') }}">
             <div class="preview" />

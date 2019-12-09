@@ -20,7 +20,7 @@
                             @php $flag = true; @endphp
                         @endif
                         <div>
-                            <input class="border rounded border-dark p-2 mt-2 mb-2" type="password" id="pass" name="password" placeholder="パスワード"/>
+                            <input class="border rounded p-2 mt-2 mb-2" type="password" id="pass" name="password" placeholder="パスワード"/>
                             <span class="field-icon">
                                 <i toggle="#password-field" class="fa fa-eye toggle-password"></i>
                             </span>

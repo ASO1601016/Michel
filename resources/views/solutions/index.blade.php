@@ -101,7 +101,7 @@
         @foreach($limitItems as $item)
             <div class="container-fluid mt-2 shadow-sm border">
                 <div class="row">
-                    <div class="col-4 pt-0">
+                    <div class="col-4 pt-0 pb-0">
                     <!--企画の画像-->
                         <div class="image w-100 m-3 shadow-sm">
                             <div class="inner w-100">
@@ -124,9 +124,9 @@
                     <div class="container-fluid">
                         <div class="row">
                             
-                            <div class="col-6 pl-4"><p style="color:gray;"><i class="fa fa-tag" aria-hidden="true"></i>{{$categories[$item->category_id-1]->name}}</p></div>
+                            <div class="col-6 pl-4 pt-0 pb-0 mt-2"><p style="color:gray;"><i class="fa fa-tag" aria-hidden="true"></i>{{$categories[$item->category_id-1]->name}}</p></div>
                             <div class="col-2"></div>
-                            <div class="col-4" style="text-align:right;">
+                            <div class="col-4 pt-0 pb-0" style="text-align:right;">
                                 <form method="get" width="100%" name="form{{$item->id}}" action="detail">
                                     <input type="hidden" name="id" value="{{$item->id}}">
                                     <button class="btn detailbtn" href="javascript:form{{$item->id}}.submit()">詳細へ

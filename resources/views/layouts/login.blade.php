@@ -32,7 +32,7 @@
         </div>
 
         <div class="footer text-center">
-           copyright 2019 Advancing.
+           copyright 2019 michel.
         </div>
     </body>
 </html>

@@ -100,9 +100,9 @@
         <div class="content">
             @yield('content')
         </div>
-        {{-- <div class="footer">
-            
-        </div> --}}
+        <div class="footer text-center">
+            <a href="http://yahoo.co.jp/" style="text-decoration: none;color:black">copyright 2019 michel.</a>
+        </div>
         
     </body>
 </html>
