@@ -43,7 +43,7 @@ div{
 
 
 header{
-    background-color: #BCB5B5;
+    background-color: white;
 }
 .drawer-hamburger{
     z-index: 4;
@@ -70,10 +70,7 @@ i{
     background-color: #F7B46B;
     border-radius: 20px;
 }
-.titlebtn{
-    border: none;
-    background-color: #BCB5B5;
-}
+
 .drawer-menu-item{
     text-align: center;
     margin: 0 auto;

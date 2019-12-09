@@ -11,7 +11,7 @@
         
             <!--新着-->
             <div id="title">
-                <h2>New Topics</h2>
+                <h5>New Topics</h5>
             </div>
 
             <!--新着企画一覧-->
@@ -94,7 +94,7 @@
         @isset($limitItems)
         <!--締め切り間近-->
         <div id="title">
-            <h2>締め切り間近！</h2>
+            <h5>締め切り間近！</h5>
         </div>
         <!--締め切り間近の企画一覧-->
         <div class="mx-2">
@@ -142,14 +142,14 @@
         </div>
         @endisset
         <!--ランキング-->
-        <div id="title">
+        {{-- <div id="title">
             <h2>ランキング</h2>
         </div>
-        <div>フェーズ２のため工事中</div>
+        <div>フェーズ２のため工事中</div> --}}
         
         <!--カテゴリ-->
-        <div id="title">
-            <h2>カテゴリ</h2>
+        <div id="title" class="mt-3">
+            <h5>カテゴリ</h5>
         </div>
         <!--カテゴリ一覧-->
         <div class="container-fluid text-center">

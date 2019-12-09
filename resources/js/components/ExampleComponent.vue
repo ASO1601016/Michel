@@ -24,7 +24,7 @@
 
         <div class="container-fluid js-auto-scroll">
             <div class="row">
-                <div class="send fixed-bottom bg-ao pt-1 pb-1" style="text-align: center;">
+                <div class="send fixed-bottom bg-ao pt-2 pb-2 border-top" style="text-align: center;">
                     <textarea maxlength="128" style="vertical-align:top;width:40%;" placeholder="メッセージを入力" name="message" rows="1" class="text-area send-message border-dark rounded col-xs-4" v-model="message"></textarea>
                     
                     <button id="sub" type="button" :disabled="processing" @click="send()" class="justify-content-center border ml-1 col-xs-4 rounded btn-flat-simple" style="vertical-align: top;">送信</button>

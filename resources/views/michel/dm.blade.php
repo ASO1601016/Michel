@@ -14,7 +14,7 @@ $(document).ready(function(){
     <!-- <div class="wrap">　こいつがあればヘッダー画像が画面幅からはみ出さない。けどヘッダー固定できなくなる -->
     
     <!-- 企画のサムネイル -->
-    <header class="sticky-top">
+    <header class="sticky-top border-bottom">
         <div class=" header-image">
             <!-- 企画者のアイコン -->
             <div class="title text-center tbl">

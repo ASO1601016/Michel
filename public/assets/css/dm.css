@@ -8,7 +8,7 @@
 
 
 .bg-ao{
-  background-color: #BBDEFB;
+  background-color: white;
 }
 
 .time-p{
@@ -24,10 +24,13 @@
 
 .text-area {
   resize: none;
+  background-color: #EFEFEF;
+  border: none;
 }
 
 ::placeholder {
-	font-size: 90%;
+  font-size: 90%;
+  padding-left: 5px;
 }
 
 .bg-dm{
@@ -59,11 +62,12 @@
 .text-middle {
   font-size: 100%;
   color: black;
+  font-weight: bold;
 }
 
 .text-small {
   font-size: 60%;
-  color: black;
+  color: gray;
 }
 
 /*以下、①背景色など*/
@@ -137,7 +141,7 @@
   padding: 8px;
   max-width: 200px;
   border-radius: 12px;
-  background: #BBFFFF;
+  background: #F7B46B;
   /* font-size: 15px: */
   text-align: left;
 }
@@ -148,7 +152,7 @@
   top: 3px; 
   right: -19px;
   border: 8px solid transparent;
-  border-left: 18px solid #BBFFFF;
+  border-left: 18px solid #F7B46B;
   -webkit-transform: rotate(-35deg);
   transform: rotate(-35deg);
 }
@@ -173,7 +177,9 @@
     background: #ECECEC;
     transition: .4s;
 }
-
+.sticky-top{
+  background-color: white;
+}
 .a {
   text-decoration: none;
 }
