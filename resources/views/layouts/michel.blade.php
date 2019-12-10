@@ -93,7 +93,7 @@
         <div class="collapse navbar-collapse" id="navbarsExample02">
             <form class="form-inline my-2 my-md-0 mx-auto w-75" method="post" action="./searchResult">
                 @csrf
-                <input class="form-control" type="text" name="search" placeholder="Search" maxlength="50">
+                <input class="form-control w-100" type="text" name="search" placeholder="Search" maxlength="50">
             </form>
       </div>
     </nav>
