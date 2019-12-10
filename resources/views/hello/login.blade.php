@@ -14,7 +14,7 @@
                     <form class="login-form pw-form-container" action="./login_check" method="post">
                         {{ csrf_field() }}
                         @php $flag = false; @endphp
-                        <input class="border rounded border-dark p-2 mb-2" type="text" name="id" value="{{old('id')}}" placeholder="学籍番号"/>
+                        <input class="border rounded p-2 mb-2" type="text" name="id" value="{{old('id')}}" placeholder="学籍番号"/>
                         @if ($errors->first('id')=="学籍番号を入力してください。")
                             <div class="bg-danger text-white mt-2 pl-1 border border-danger rounded ib"><b>{{$errors->first('id')}}</b></div>
                             @php $flag = true; @endphp

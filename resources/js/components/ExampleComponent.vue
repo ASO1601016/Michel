@@ -6,7 +6,7 @@
                     <!-- メッセージ内容：自分側 -->
                     <div class="mycomment" v-if="m.human === 0">
                         <span class="time-m" v-text="m.datetime"></span>
-                        <p v-text="m.message"></p>
+                        <p class="brProcessing" v-text="m.message"></p>
                     </div>
                     <div class="partner" v-else>
                         <div class="faceicon">
@@ -14,7 +14,7 @@
                             
                         </div>
                         <div class="chatting">
-                            <div class="says" v-text="m.message"></div>
+                            <div class="says brProcessing" v-text="m.message"></div>
                             <span class="time-p" v-text="m.datetime"></span>
                         </div>
                     </div>

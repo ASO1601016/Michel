@@ -44,7 +44,7 @@
                 <!-- 名前 -->
                 <div class="form-group">
                     <label>名前</label><span class="text-danger">　必須</span>
-                    <input type="text" name="nickname" class="form-control" value="{{old('nickname')}}" placeholder="サイト内で表示されるニックネームを入力">
+                    <input type="text" name="nickname" maxlength="20" class="form-control" value="{{old('nickname')}}" placeholder="サイト内で表示されるニックネームを入力">
                     @if ($errors->has('nickname'))
                         <div class="bg-danger text-white mt-2 pl-1 border border-danger rounded ib"><b>{{$errors->first('nickname')}}</b></div>
                     @endif
@@ -98,7 +98,7 @@
                 <!-- 自己紹介 -->
                 <div class="form-group mt-3">
                     <label>自己紹介</label><span class="text-muted">　任意</span>
-                    <textarea name="intro" id="textarea" class="form-control selfintro">{{ old('intro') }}</textarea>
+                    <textarea name="intro" id="textarea" maxlength="200" class="form-control selfintro">{{ old('intro') }}</textarea>
                     @if ($errors->has('intro'))
                         <div class="bg-danger text-white mt-2 pl-1 border border-danger rounded ib"><b>{{$errors->first('intro')}}</b></div>
                     @endif

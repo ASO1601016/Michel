@@ -22,6 +22,7 @@
   margin-right: 2px;
 }
 
+
 .text-area {
   resize: none;
   background-color: #EFEFEF;
@@ -109,6 +110,12 @@
   max-width: 200px;
   border-radius: 12px;
   background: white;
+  
+}
+
+.brProcessing{
+  white-space:pre-wrap;
+  word-wrap:break-word;
 }
 
   

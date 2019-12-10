@@ -336,6 +336,11 @@ class UserController extends Controller
     }
 
     public function edit(Request $request){
+        $validate_rule = [
+            'icon' => 'image'
+        ];
+        $this->validate($request,$validate_rule);
+        
         $User = new \App\user;
         $id = $request->session()->get('userid');
 

@@ -5,47 +5,48 @@
 @endsection
 @section('content')
 
-<div class="wrap bg-light" style="min-height:100%;">
+<div class="wrap" style="min-height:100%;">
+    <div class="prof my-4" style="backgroud-color:white;">
 
-    <h4 class="container-fluid text-center border p-2 m-0">
+    {{-- <h4 class="container-fluid text-center border p-2 m-0">
         <div class="text-small">
             {{$name}}のプロフィール
         </div>
-    </h4>
+    </h4> --}}
 
     <!-- プロフィール画像の変更 -->
     {{-- <div class=" header-image"></div> --}}
     @empty ($image)
-        <img src="storage/icon/me.png" class="icon rounded-circle icon-image ml-2 border border-dark mt-2" width="65" height="65">
+        <img src="storage/icon/me.png" class="d-block mx-auto icon rounded-circle icon-image m-3" width="100" height="100">
     @else
-        <img src="{{$image}}" class="icon rounded-circle icon-image ml-2 border border-dark mt-2" width="65" height="65">
+        <img src="{{$image}}" class="d-block mx-auto icon rounded-circle icon-image m-3" width="100" height="100">
     @endempty
 
-    <div class="icon text-dark ml-2 small-font">
-        <div class="title"><strong>{{$name}}</strong></div>
+    <div class="icon text-dark small-font text-center">
+        <div class="title" style="font-weight:bold;font-size:20px;"><strong>{{$name}}</strong></div>
         <div class="text-middle"><time>{{$school}}</time> / 性別：{{$sex}}</div>
         <div class="text-middle"><time>企画完了数：{{$comp}}</time> / 評価：⭐️{{$status}}</div>
     </div>
-    <div class="border-bottom border-dark p-1"></div>
+    <div class="p-1"></div>
 
     <!-- 自己紹介 -->
-    <div class="container-fluid px-0 pt-2">
-        <strong class="pl-1 py-2">自己紹介</strong>
-        <div class="m-2" style="word-break: break-all;">
+    <div class="container-fluid">
+        <div class="border-top border-bottom p-2 mt-2" style="word-break: break-all;">
             @if(!$detail)
                 未設定
             @else
                 {!! nl2br(e($detail)) !!}
             @endif
         </div>
-        <div class="border-bottom border-dark py-1"></div>
+        <div class=""></div>
     </div>
 
     <!-- ページ編集ボタン -->
-    <button onclick="location.href='./edit'" class="btn btn-success btn-lg mx-auto d-block mt-3">ページを編集する</button>
-
-    <div class="container-fluid bg-light px-0 pt-3">
-        <strong class="pl-1 py-2">募集中の企画</strong>
+    <button onclick="location.href='./edit'" class="btn bg-white mx-auto d-block my-3 w-75" style="border:dashed 2px #E0E0E0;color:#E0E0E0;">ページを編集する</button>
+    </div>
+    <div class="obj bg-light">
+    <div class="container-fluid text-center px-0 pt-3 my-3">
+        <strong class="pl-1 py-2"><i class="fa fa-bullhorn" aria-hidden="true"></i>募集中の企画</strong>
     </div>
     @if($recruit->count() > 0)
         @foreach ($recruit as $recru)
@@ -80,8 +81,8 @@
         募集中の企画はありません
     @endif
 
-    <div class="container-fluid bg-light px-0 pt-3">
-        <strong class="pl-1 py-2">達成した企画</strong>
+    <div class="container-fluid text-center px-3 pt-3 my-3">
+        <strong class="p-1 py-2"><i class="fa fa-trophy" aria-hidden="true"></i>達成した企画</strong>
     </div>
     @if($complete->count() > 0)
         @foreach ($complete as $co)
@@ -113,6 +114,6 @@
     @else
         達成した企画はありません
     @endif
-
+    </div>
 </div>
 @endsection

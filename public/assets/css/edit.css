@@ -1,3 +1,12 @@
+.ib{
+    text-align: center;
+    font-weight: bold;
+}
+
+.child{
+    display: inline-block;
+}
+
 .wrap {
 	overflow: hidden;
 }
