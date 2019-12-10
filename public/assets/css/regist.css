@@ -47,8 +47,8 @@ body {
   color: white;
 }
 .selfintro{
-    min-height: 50px;
-    max-height: 200px;
+  min-height: 50px;
+  max-height: 200px;
 }
 .custom-file {
   overflow: hidden;
