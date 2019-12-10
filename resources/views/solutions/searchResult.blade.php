@@ -17,7 +17,7 @@
         @foreach($items as $item)
             <div class="container-fluid mt-2 shadow-sm border">
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-4 pt-0 pb-0">
                     <!--企画の画像-->
                         <div class="image w-100 m-3 shadow-sm">
                             <div class="inner w-100">
@@ -37,16 +37,16 @@
                         </div>
                     </div>
                     <!--カテゴリ表示と詳細ボタン表示-->
-                    <div class="container-fluid m-3">
+                    <div class="container-fluid">
                         <div class="row">
-                            <div class="col-8">
-                                <a class="text-muted">{{$categories[$item->category_id-1]->name}}</a>
-                            </div>    
-                            <div class="col-4" style="text-align:right;">
+                            <div class="col-6 pl-4 pt-0 pb-0 mt-2">
+                                <p><i class="fa fa-tag" aria-hidden="true"></i>{{$categories[$item->category_id-1]->name}}</p>
+                            </div>
+                            <div class="col-2"></div>
+                            <div class="col-4 pt-0 pb-0" style="text-align:right;">
                                 <form method="get" width="100%" name="form{{$item->id}}" action="detail">
                                     <input type="hidden" name="id" value="{{$item->id}}">
-                                    <button style="width:100%;" class="p-0" href="javascript:form{{$item->id}}.submit()">
-                                        <img class="img shadow-sm w-100" src="storage/image/shousai.png" alt="詳細へ">
+                                    <button class="btn detailbtn" href="javascript:form{{$item->id}}.submit()">詳細へ
                                     </button>
                                 </form>
                             </div>
