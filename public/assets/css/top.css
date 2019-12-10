@@ -31,7 +31,8 @@ i{
     color:#444444;   
 }
 .content-title{
-    font-weight:bold; 
+    font-weight:bold;
+    font-size: 13px;
 }
 .content-sub{
  font-size: 0.5rem;   
