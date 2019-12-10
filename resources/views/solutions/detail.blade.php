@@ -31,9 +31,21 @@
                 <div class="container-fluid pl-0 my-2">
                     <!--Usersテーブルから引っ張る-->
                     @empty ($title->userImage)
-                        <img src="storage/icon/me.png" class="rounded-circle" width="65" height="65">
+                        @if($title->sex == "男")
+                            <img src="storage/icon/me.png" class="rounded-circle border border-primary" width="65" height="65">
+                        @elseif($title->sex == "女")
+                            <img src="storage/icon/me.png" class="rounded-circle border border-danger" width="65" height="65">
+                        @else
+                            <img src="storage/icon/me.png" class="rounded-circle" width="65" height="65">
+                        @endif
                     @else
-                        <img src="{{ $title->userImage }}" class="rounded-circle" width="65" height="65">
+                        @if($title->sex == "男")
+                            <img src="{{ $title->userImage }}" class="rounded-circle border border-primary" width="65" height="65">
+                        @elseif($title->sex == "女")
+                            <img src="{{ $title->userImage }}" class="rounded-circle border border-danger" width="65" height="65">
+                        @else
+                            <img src="{{ $title->userImage }}" class="rounded-circle" width="65" height="65">
+                        @endif
                     @endempty
                     <span class="text-middle">{{ $title->name }}
                         <time class="text-muted">
