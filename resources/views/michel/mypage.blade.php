@@ -54,7 +54,6 @@
             <form method="get" width="100%" name="form{{$recru->id}}" action="detail"> 
                 <input type="hidden" name="id" value="{{$recru->id}}">
                 <button style="width:100%;" class="p-0 border" href="javascript:form{{$recru->id}}.submit()">
-                    <div class="container">
                     <div class="row boader mx-1" style="background:white;text-decoration: none;">
                         <div class="col-3">
                             <!--企画の画像-->
@@ -73,7 +72,6 @@
                             <div class="text-title text-left mt-2 text-dark">{{$recru->title}}</div>
                             <div class="text-muted text-left" style="font-size:80%;">{{$category[$recru->category_id-1]->name}}</div>
                         </div>
-                    </div>
                     </div>
                 </button>
             </form>
