@@ -11,6 +11,7 @@
     background-size: cover;
     text-align: center;
     background-color: white;
+    z-index: 2;
 }
 .gazo {
     filter: drop-shadow(0 5px 5px rgba(0,0,0,0.6));
@@ -21,6 +22,7 @@
 
 .jumbotron-fluid{
     background-color: gray;
+    position: relative;
 }
 
 .container-fluid.img {
@@ -47,4 +49,51 @@
 .btn{
     display: inline-block;
 }
-
+.object{
+    background-color: white;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+.heart{
+    width: 100px;
+    height: 100px;
+    background: url(/storage/image/web_heart_animation.png)no-repeat;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 auto;
+}
+.hred{
+    transition-delay: 5s;
+    background-position: -2800px 0;  
+    animation: fave-heart 1s steps(28);
+}
+.hnone{
+    background-position: 0 0;
+}
+.hnone:active{
+    background-position: 0 0;
+    -webkit-transition:background 1s steps(28);
+    transition:background 1s steps(28);
+}
+@keyframes fave-heart{
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position: -2800px 0;
+    }
+}
+.object{
+    z-index: 3;
+}
+.recruit{
+    border-radius: 100px;
+    background-color: #F7B46B;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+}

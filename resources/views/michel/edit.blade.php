@@ -63,7 +63,7 @@
             </div>
 
             <!-- 更新ボタン -->
-            <input type="submit" class="btn btn-success mx-auto d-block" value="更新する">
+            <input type="submit" class="btn upload mx-auto d-block" value="更新する">
         </form>
     </div>
 @endsection

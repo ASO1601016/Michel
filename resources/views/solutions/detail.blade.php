@@ -19,6 +19,17 @@
                     @else
                         <img class="gazo" src="{{ $title->image }}">
                     @endempty
+                    @if(!$mySolutionBool)
+                    <div class="object shadow-sm">
+                        <form action="./favoComplete" method="get" style="display:inline">
+                        @if($favoBool)
+                            <button type="submit" class="heart hred btn"></button><!--解除-->
+                        @else
+                            <button type="submit" class="heart hnone btn"></button><!--追加-->
+                        @endif
+                        </form>
+                    </div>
+                    @endif
                 </div>
             </div>
             
@@ -71,17 +82,10 @@
         @if(!$mySolutionBool)
             <div class="form-submit container-fluid bg-light py-3">
                 <form method="get" action="./apply" enctype="multipart/form-data" style="display:inline">
-                    <input type="submit" class="btn btn-success d-block mx-auto" value="応募する">
+                    <input type="submit" class="btn recruit d-block mx-auto" value="応募する">
                 </form>
-                <form action="./favoComplete" method="get" style="display:inline">
-                    @if($favoBool)
-                        <input type="submit" class="btn btn-success d-block mx-auto" style="color:yellow;" value="お気に入り解除 {{$favoCount}}">
-                    @else
-                        <input type="submit" class="btn btn-success d-block mx-auto" value="お気に入り追加 {{$favoCount}}">
-                    @endif
-                </form>
+                
             </div>
         @endif
-        
-
+    
 @endsection
