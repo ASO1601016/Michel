@@ -19,6 +19,7 @@
                     @else
                         <img class="gazo" src="{{ $title->image }}">
                     @endempty
+                    @if(!$mySolutionBool)
                     <div class="object shadow-sm">
                         <form action="./favoComplete" method="get" style="display:inline">
                         @if($favoBool)
@@ -28,6 +29,7 @@
                         @endif
                         </form>
                     </div>
+                    @endif
                 </div>
             </div>
             
