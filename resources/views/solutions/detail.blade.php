@@ -21,13 +21,13 @@
                     @endempty
                     @if(!$mySolutionBool)
                     <div class="object shadow-sm">
-                        <form action="./favoComplete" method="get" style="display:inline">
+                        {{-- <form action="./favoComplete" method="get" style="display:inline"> --}}
                         @if($favoBool)
-                            <button type="submit" class="heart hred btn"></button><!--解除-->
+                            <button type="submit" onfocus="this.blur();" class="heart hred btn" onclick="location.replace('./favoComplete')"></button><!--解除-->
                         @else
-                            <button type="submit" class="heart hnone btn"></button><!--追加-->
+                            <button type="submit" onfocus="this.blur();" class="heart hnone btn" onclick="location.replace('./favoComplete')"></button><!--追加-->
                         @endif
-                        </form>
+                        {{-- </form> --}}
                     </div>
                     @endif
                 </div>
