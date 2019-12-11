@@ -53,7 +53,7 @@
         <div class="container-fluid p-0" style="word-wrap: break-word;overflow-wrap: break-word;">
             <form method="get" width="100%" name="form{{$recru->id}}" action="detail"> 
                 <input type="hidden" name="id" value="{{$recru->id}}">
-                <button style="width:100%;" class="p-0" href="javascript:form{{$recru->id}}.submit()">
+                <button style="width:100%;" class="p-0 border" href="javascript:form{{$recru->id}}.submit()">
                     <div class="container">
                     <div class="row boader mx-1" style="background:white;text-decoration: none;">
                         <div class="col-3">
@@ -91,7 +91,7 @@
         <div class="container-fluid p-0" style="word-wrap: break-word;overflow-wrap: break-word;">
             <form method="get" width="100%" name="form{{$co->id}}" action="detail"> 
                 <input type="hidden" name="id" value="{{$co->id}}">
-                <button style="width:100%;" class="p-0" href="javascript:form{{$co->id}}.submit()">
+                <button style="width:100%;" class="p-0 border" href="javascript:form{{$co->id}}.submit()">
                     <div class="row boader mx-1" style="background:white;text-decoration: none;">
                         <div class="col-3">
                             <!--企画の画像-->
