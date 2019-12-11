@@ -37,3 +37,7 @@
 .text-title {
     font-size: 100%;
 }
+.toedit:hover{
+    background-color: #F7B46B;
+    color: white;
+}
