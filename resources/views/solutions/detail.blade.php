@@ -19,6 +19,13 @@
                     @else
                         <img class="gazo" src="{{ $title->image }}">
                     @endempty
+                        <form action="./favoComplete" method="get" style="display:inline">
+                        @if($favoBool)
+                            <button type="submit" class="heart hred btn"></button><!--解除-->
+                        @else
+                            <button type="submit" class="heart hnone btn"></button><!--追加-->
+                        @endif
+                        </form>
                 </div>
             </div>
             
@@ -73,17 +80,7 @@
                 <form method="get" action="./apply" enctype="multipart/form-data" style="display:inline">
                     <input type="submit" class="btn btn-success" value="応募する">
                 </form>
-                <div class="object">
-                    <div class="inner">
-                    <form action="./favoComplete" method="get" style="display:inline">
-                        @if($favoBool)
-                        <button type="submit" class="heart hred btn"></button><!--解除--><span>{{$favoCount}}</span>
-                        @else
-                        <button type="submit" class="heart hnone btn"></button><!--追加--><span>{{$favoCount}}</span>
-                        @endif
-                    </form>
-                    </div>
-                </div>
+                
             </div>
         @endif
     
