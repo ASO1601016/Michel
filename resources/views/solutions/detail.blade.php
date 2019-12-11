@@ -19,6 +19,7 @@
                     @else
                         <img class="gazo" src="{{ $title->image }}">
                     @endempty
+                    <div class="object">
                         <form action="./favoComplete" method="get" style="display:inline">
                         @if($favoBool)
                             <button type="submit" class="heart hred btn"></button><!--解除-->
@@ -26,6 +27,7 @@
                             <button type="submit" class="heart hnone btn"></button><!--追加-->
                         @endif
                         </form>
+                    </div>
                 </div>
             </div>
             
