@@ -52,7 +52,7 @@
 .heart{
     width: 100px;
     height: 100px;
-    background: url(../../../storage/app/public/image/web_heart_animation.png)no-repeat;
+    background: url(/storage/image/web_heart_animation.png)no-repeat;
     cursor: pointer;
     padding: 0;
     position: absolute;
