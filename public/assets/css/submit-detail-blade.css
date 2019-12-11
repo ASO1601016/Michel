@@ -49,15 +49,22 @@
 .btn{
     display: inline-block;
 }
+.object{
+    background-color: white;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
 .heart{
     width: 100px;
     height: 100px;
     background: url(/storage/image/web_heart_animation.png)no-repeat;
     cursor: pointer;
-    padding: 0;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
+    display: inline-block;
+    margin: 0 auto;
 }
 .hred{
     transition-delay: 5s;
