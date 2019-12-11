@@ -11,6 +11,7 @@ class FavoriteController extends Controller
 {
     public function index(Request $request)
     {
+        $today = date("Y-m-d");
         $categories = category::all();
         $id = $request->session()->get('userid');
         $fav = favorite::select('solution_id')
@@ -18,6 +19,9 @@ class FavoriteController extends Controller
                 ->orderBy('favo_date', 'desc')
                 ->get();
         $items = solution::whereIn('id', $fav)
+                ->where('apply_flag', 0)
+                ->where('comp_flag', 0)
+                ->where('limitDate','>=',$today)
                 ->get();
         return view('favorite.index', ['categories' => $categories,'items'=>$items]);
     }

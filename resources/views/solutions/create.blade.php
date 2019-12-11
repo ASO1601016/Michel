@@ -6,7 +6,7 @@
 @endsection
 @section('content')
 
-    <form method="post" action="{{ route('solutions.create') }}" enctype="multipart/form-data">
+    <form method="post" action="{{ route('solutions.create') }}" onSubmit="return double()" enctype="multipart/form-data">
  @csrf
     <div class="wrap">
       <h4 class="container-fluid text-center border p-2">
@@ -124,5 +124,11 @@
       </div>
     </div>
 </form>
-
+<script>
+  var set=0;
+  function double() {
+  if(set==0){ set=1; } else {
+  alert("只今処理中です。\n落ち着いてください。");
+  return false; }}
+</script>
 @endsection

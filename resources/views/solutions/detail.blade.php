@@ -81,9 +81,9 @@
         </div>
         @if(!$mySolutionBool)
             <div class="form-submit container-fluid bg-light py-3">
-                <form method="get" action="./apply" enctype="multipart/form-data" style="display:inline">
-                    <input type="submit" class="btn recruit d-block mx-auto" value="応募する">
-                </form>
+
+                    <button type="submit" class="btn recruit d-block mx-auto" onclick="location.replace('./apply')">応募する</button>
+
                 
             </div>
         @endif

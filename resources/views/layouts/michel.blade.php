@@ -69,9 +69,9 @@
             <i class="fa fa-commenting" aria-hidden="true" style="color:#444444;"></i>DM一覧</a>
         </li>
         
-        <li><a class="drawer-menu-item" href="#">
+        {{-- <li><a class="drawer-menu-item" href="#">
             <i class="fa fa-cog"  aria-hidden="true" style="color:#444444;"></i>設定</a>
-        </li>
+        </li> --}}
         
         <li><a class="drawer-menu-item" href="./logout">
             <i class="fa fa-sign-out" aria-hidden="true" style="color:#444444;"></i>ログアウト</a>

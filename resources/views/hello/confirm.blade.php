@@ -9,7 +9,7 @@
         <strong>会員情報の確認</strong>
     </div>
     @isset($id)
-        <form action="./complete" method="post">
+        <form onSubmit="return double()" action="./complete" method="post">
             {{ csrf_field() }}
             <div class="container-fluid d-block mx-auto">
                 <table width="100%" class="table table-borderless bg-darkgray text-small rounded-lg">
@@ -35,4 +35,11 @@
             </form>
         @endisset
     </div>
+    <script>
+        var set=0;
+        function double() {
+        if(set==0){ set=1; } else {
+        alert("只今処理中です。\n落ち着いてください。");
+        return false; }}
+    </script>
 @endsection
