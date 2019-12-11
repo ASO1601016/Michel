@@ -115,8 +115,8 @@
         @if ($errors->has('image'))
             <div class="bg-danger text-white mt-2 pl-1 border border-danger rounded ib"><b>{{$errors->first('image')}}</b></div>
         @endif
-        
-
+        {{-- created_at送信処理 --}}
+        <input type="hidden" name="created_at" value="{{date('Y-m-d')}}">
         <div class="form-submit">
           <button type="submit" class="btn btn-success btn-lg btn-block my-3">投稿する</button>
         </div>

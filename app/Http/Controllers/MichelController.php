@@ -17,15 +17,18 @@ class MichelController extends Controller
 
     public function top(Request $request)
     {
+        $today = date("Y-m-d");
         $myId = $request->session()->get('userid');
         $newItems = Solution::where('solutionUser_id','<>',$myId)
                             ->where('apply_flag',0)
+                            ->where('limitDate','>=',$today)
                             ->groupBy('solutionUser_id', 'title', 'created_at')
                             ->orderBy('created_at', 'desc')
                             ->take(6)->get();
         $limitItems = Solution::where('solutionUser_id','<>',$myId)
                             ->where('apply_flag',0)
                             ->whereNotNull('limitDate')
+                            ->where('limitDate','>=',$today)
                             ->groupBy('solutionUser_id', 'title', 'created_at')
                             ->orderBy('created_at', 'desc')
                             ->take(3)->get();
