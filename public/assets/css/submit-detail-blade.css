@@ -11,6 +11,7 @@
     background-size: cover;
     text-align: center;
     background-color: white;
+    z-index: 2;
 }
 .gazo {
     filter: drop-shadow(0 5px 5px rgba(0,0,0,0.6));
@@ -21,6 +22,7 @@
 
 .jumbotron-fluid{
     background-color: gray;
+    position: relative;
 }
 
 .container-fluid.img {
@@ -50,9 +52,12 @@
 .heart{
     width: 100px;
     height: 100px;
-    background: url(/storage/image/web_heart_animation.png)no-repeat;
+    background: url(../../../storage/app/public/image/web_heart_animation.png)no-repeat;
     cursor: pointer;
     padding: 0;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
 }
 .hred{
     transition-delay: 5s;
@@ -74,4 +79,7 @@
     100%{
         background-position: -2800px 0;
     }
+}
+.object{
+    z-index: 3;
 }
