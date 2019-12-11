@@ -63,7 +63,7 @@
 .text-middle {
   font-size: 100%;
   color: black;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .text-small {

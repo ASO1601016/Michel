@@ -35,7 +35,7 @@
           
         
         <div class="form-group">
-          <textarea class="form-control" style="resize: none;" name="detail" placeholder="例）サービスの内容、ユーザーのメリット、アピールしたい実績などを具体的に書いてください。">{{ old('detail') }}</textarea>   
+          <textarea class="form-control" style="resize: none;" name="detail" maxlength="1000" placeholder="例）サービスの内容、ユーザーのメリット、アピールしたい実績などを具体的に書いてください。">{{ old('detail') }}</textarea>   
         </div>
         @if ($errors->has('detail'))
             <div class="bg-danger text-white mt-2 pl-1 border border-danger rounded ib"><b>{{$errors->first('detail')}}</b></div>

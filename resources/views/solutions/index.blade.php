@@ -115,9 +115,16 @@
                     </div>
                     <div class="col-8">
                     <!--タイトル&詳細-->
-                        <div class="container-fluid m-3 p-3 bg-light" style="width:95%;">
-                            <p class="content-title"  style="word-break: break-all;">{{$item->title}}</p>
-                            <p class="content-sub"  style="word-break: break-all;">{{$item->detail}}</p>
+                        <div class="container-fluid m-3 pt-3 px-3 pb-1 bg-light" style="width:95%;">
+                            @php
+                                $limit = 20;
+                                if(mb_strlen($item->detail) > $limit) { 
+                                    $item->detail = mb_substr($item->detail,0,$limit);
+                                    $item->detail = $item->detail."..." ;
+                                }
+                            @endphp
+                            <p class="content-title"  style="word-break: break-all;">{!! nl2br(e($item->title)) !!}</p>
+                            <p class="content-sub"  style="word-break: break-all;">{!! nl2br(e($item->detail)) !!}</p>
                         </div>
                     </div>
                     <!--カテゴリ表示と詳細ボタン表示-->

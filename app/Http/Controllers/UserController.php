@@ -422,7 +422,7 @@ class UserController extends Controller
 
     public function logout(Request $request){
         $request->session()->forget('userid');
-        return redirect('/');
+        return redirect('./login');
     }
 
     // 入力された学籍番号とパスワードが正しいかどうか判定

@@ -28,19 +28,34 @@
                         {{ $title->title }}
                     </strong>
                 </h5>
-                <div class="container-fluid pl-0 my-2">
+
+                
+                <div class="container-fluid my-2">
+                    <div class="row">
                     <!--Usersテーブルから引っ張る-->
-                    @empty ($title->userImage)
-                        <img src="storage/icon/me.png" class="rounded-circle" width="65" height="65">
-                    @else
-                        <img src="{{ $title->userImage }}" class="rounded-circle" width="65" height="65">
-                    @endempty
-                    <span class="text-middle">{{ $title->name }}
-                        <time class="text-muted">
-                            {{ $title->sex }}
-                        </time>
-                    </span>
+                        <div class="col-3 col-sm-2 pl-0">
+                            @empty ($title->userImage)
+                                @if($title->sex == "男")
+                                    <img src="storage/icon/me.png" style="border: 2px solid #d9534f;" class="rounded-circle" width="65" height="65">
+                                @elseif($title->sex == "女")
+                                    <img src="storage/icon/me.png" style="border: 2px solid #d9534f;" class="rounded-circle" width="65" height="65">
+                                @else
+                                    <img src="storage/icon/me.png" class="rounded-circle" width="65" height="65">
+                                @endif
+                            @else
+                                @if($title->sex == "男")
+                                    <img src="{{ $title->userImage }}" style="border: 2px solid #d9534f;" class="rounded-circle" width="65" height="65">
+                                @elseif($title->sex == "女")
+                                    <img src="{{ $title->userImage }}" style="border: 2px solid #d9534f;" class="rounded-circle" width="65" height="65">
+                                @else
+                                    <img src="{{ $title->userImage }}" class="rounded-circle" width="65" height="65">
+                                @endif
+                            @endempty
+                        </div>
+                        <div class="col-9 col-sm-10 my-auto">{{ $title->name }}</div>
+                    </div>
                 </div>
+                
                 
 
             </div>
