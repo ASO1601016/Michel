@@ -19,7 +19,7 @@
                     @else
                         <img class="gazo" src="{{ $title->image }}">
                     @endempty
-                    <div class="object">
+                    <div class="object shadow-sm">
                         <form action="./favoComplete" method="get" style="display:inline">
                         @if($favoBool)
                             <button type="submit" class="heart hred btn"></button><!--解除-->
