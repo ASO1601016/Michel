@@ -90,3 +90,10 @@
 .object{
     z-index: 3;
 }
+.recruit{
+    border-radius: 100px;
+    background-color: #F7B46B;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+}
