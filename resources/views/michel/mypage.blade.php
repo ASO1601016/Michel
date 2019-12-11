@@ -5,8 +5,8 @@
 @endsection
 @section('content')
 
-<div class="wrap" style="min-height:100%;">
-    <div class="prof my-4" style="backgroud-color:white;">
+<div class="wrap bg-light" style="min-height:100%;padding-bottom:30%;">
+    <div class="prof py-4 bg-white">
 
     {{-- <h4 class="container-fluid text-center border p-2 m-0">
         <div class="text-small">
@@ -42,14 +42,15 @@
     </div>
 
     <!-- ページ編集ボタン -->
-    <button onclick="location.href='./edit'" class="btn bg-white mx-auto d-block my-3 w-75" style="border:dashed 2px #E0E0E0;color:#E0E0E0;">ページを編集する</button>
+    <button onclick="location.href='./edit'" class="btn bg-white mx-auto d-block my-3 w-75 toedit" style="border:dashed 2px #E0E0E0;color:#E0E0E0;">ページを編集する</button>
     </div>
-    <div class="obj bg-light">
+    <div class="obj padding-bottom:30%;">
     <div class="container-fluid text-center px-0 pt-3 my-3">
         <strong class="pl-1 py-2"><i class="fa fa-bullhorn" aria-hidden="true"></i>募集中の企画</strong>
     </div>
     @if($recruit->count() > 0)
         @foreach ($recruit as $recru)
+        <div class="container-fluid p-0" style="word-wrap: break-word;overflow-wrap: break-word;">
             <form method="get" width="100%" name="form{{$recru->id}}" action="detail"> 
                 <input type="hidden" name="id" value="{{$recru->id}}">
                 <button style="width:100%;" class="p-0" href="javascript:form{{$recru->id}}.submit()">
@@ -76,9 +77,10 @@
                     </div>
                 </button>
             </form>
+        </div>
         @endforeach
     @else
-        募集中の企画はありません
+        <div class="bg-white pl-3 py-2">募集中の企画はありません</div>
     @endif
 
     <div class="container-fluid text-center px-3 pt-3 my-3">
@@ -86,6 +88,7 @@
     </div>
     @if($complete->count() > 0)
         @foreach ($complete as $co)
+        <div class="container-fluid p-0" style="word-wrap: break-word;overflow-wrap: break-word;">
             <form method="get" width="100%" name="form{{$co->id}}" action="detail"> 
                 <input type="hidden" name="id" value="{{$co->id}}">
                 <button style="width:100%;" class="p-0" href="javascript:form{{$co->id}}.submit()">
@@ -112,8 +115,9 @@
             </form>
         @endforeach
     @else
-        達成した企画はありません
+        <div class="bg-white pl-3 py-2">達成した企画はありません</div>
     @endif
+        </div>
     </div>
 </div>
 @endsection
