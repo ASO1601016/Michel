@@ -37,7 +37,14 @@
 .text-title {
     font-size: 100%;
 }
-.toedit:hover{
+.toedit:active,.toedit:hover,.toedit:focus{
+    border:dashed 2px #F7B46B;
     background-color: #F7B46B;
     color: white;
+}
+
+.toedit{
+    border:dashed 2px #E0E0E0;
+    color:#E0E0E0;
+    background-color: white;
 }

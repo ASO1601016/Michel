@@ -38,8 +38,11 @@
     <script>
         var set=0;
         function double() {
-        if(set==0){ set=1; } else {
-        alert("只今処理中です。\n落ち着いてください。");
-        return false; }}
+            if(set==0){ set=1; } else {
+                window.alert("只今処理中です。\n落ち着いてください。");
+                // document.getElementById('#doubleClick').disabled=true;
+            return false;
+            }
+        }
     </script>
 @endsection

@@ -42,7 +42,7 @@
     </div>
 
     <!-- ページ編集ボタン -->
-    <button onclick="location.href='./edit'" class="btn bg-white mx-auto d-block my-3 w-75 toedit" style="border:dashed 2px #E0E0E0;color:#E0E0E0;">ページを編集する</button>
+    <button onclick="location.href='./edit'" class="btn mx-auto d-block my-3 w-75 toedit">ページを編集する</button>
     </div>
     <div class="obj padding-bottom:30%;">
     <div class="container-fluid text-center px-0 pt-3 my-3">
