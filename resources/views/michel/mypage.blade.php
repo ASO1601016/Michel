@@ -19,7 +19,7 @@
     @empty ($image)
         <img src="storage/icon/me.png" class="d-block mx-auto icon rounded-circle icon-image m-3" width="100" height="100">
     @else
-        <img src="{{$image}}" class="d-block mx-auto icon rounded-circle icon-image m-3" width="100" height="100">
+        <img src="{{$image}}" class="d-block mx-auto icon rounded-circle icon-image m-3" width="100" height="100" style="object-fit:cover;">
     @endempty
 
     <div class="icon text-dark small-font text-center">
