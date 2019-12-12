@@ -186,10 +186,15 @@
 }
 .sticky-top{
   background-color: white;
+  z-index: 10;
 }
 .a {
   text-decoration: none;
 }
 .container-fluid:-webkit-scrollbar {
     display:none;
+}
+
+.send{
+  z-index: 10;
 }

@@ -53,7 +53,7 @@ header{
     padding: 5px;
 }
 .drawer-overlay {
-    z-index: 2;
+    z-index: 15;
 }
 .drawer-nav {
     z-index: 5000;
