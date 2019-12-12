@@ -49,7 +49,7 @@
                                 @if($title->sex == "男")
                                     <img src="storage/icon/me.png" style="border: 2px solid #d9534f;" class="rounded-circle" width="65" height="65">
                                 @elseif($title->sex == "女")
-                                    <img src="storage/icon/me.png" style="border: 2px solid #d9534f;" class="rounded-circle" width="65" height="65">
+                                    <img src="storage/icon/me.png" style="border: 2px solid #d9534f;object-fit:cover;" class="rounded-circle" width="65" height="65">
                                 @else
                                     <img src="storage/icon/me.png" class="rounded-circle" width="65" height="65">
                                 @endif
@@ -57,7 +57,7 @@
                                 @if($title->sex == "男")
                                     <img src="{{ $title->userImage }}" style="border: 2px solid #d9534f;" class="rounded-circle" width="65" height="65">
                                 @elseif($title->sex == "女")
-                                    <img src="{{ $title->userImage }}" style="border: 2px solid #d9534f;" class="rounded-circle" width="65" height="65">
+                                    <img src="{{ $title->userImage }}" style="border: 2px solid #d9534f;object-fit:cover;" class="rounded-circle" width="65" height="65">
                                 @else
                                     <img src="{{ $title->userImage }}" class="rounded-circle" width="65" height="65">
                                 @endif
