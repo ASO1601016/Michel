@@ -46,7 +46,7 @@
         </div>
         
   <header role="banner">
-    <button type="button" class="drawer-toggle drawer-hamburger">
+    <button type="button" onfocus="this.blur();" class="drawer-toggle drawer-hamburger">
       <span class="sr-only">toggle navigation</span>
       <span class="drawer-hamburger-icon"></span>
     </button>
@@ -54,7 +54,7 @@
       <ul class="drawer-menu">
         
         <li class="text-center">
-            <button class="btn programbtn m-3 mx-auto d-block w-75" onclick="location.href='./solution'">
+            <button onfocus="this.blur();" class="btn programbtn m-3 mx-auto d-block w-75" onclick="location.href='./solution'">
                 <i class="fa fa-pencil-square-o" aria-hidden="true" style="color:white;"></i>投稿する
             </button>
         </li>
@@ -69,9 +69,9 @@
             <i class="fa fa-commenting" aria-hidden="true" style="color:#444444;"></i>DM一覧</a>
         </li>
         
-        <li><a class="drawer-menu-item" href="#">
+        {{-- <li><a class="drawer-menu-item" href="#">
             <i class="fa fa-cog"  aria-hidden="true" style="color:#444444;"></i>設定</a>
-        </li>
+        </li> --}}
         
         <li><a class="drawer-menu-item" href="./logout">
             <i class="fa fa-sign-out" aria-hidden="true" style="color:#444444;"></i>ログアウト</a>
@@ -81,7 +81,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid navcont">
             <div class="navbar-header d-block mx-auto">
-                <button class="titlebtn" onclick="location.href='./top'"><img src="storage/image/titlebrk.png" width="25%"></button>
+                <button onfocus="this.blur();" class="titlebtn" onclick="location.href='./top'"><img src="storage/image/titlebrk.png" width="25%"></button>
             </div>
         </div>     
     </nav>

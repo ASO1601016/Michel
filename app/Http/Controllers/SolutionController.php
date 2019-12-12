@@ -35,7 +35,17 @@ class SolutionController extends Controller
         // a
         $this->validate($request,$validate_rule);
 
-       
+        // 最後のsolutionSame_idをとってくる
+        // $solution = new Solution();
+        // $lastMessageId = $solution->max('solutionSame_id');
+        // if(empty($lastMessageId)){
+        //     $lastMessageId = 1;
+        // }else{
+        //     $lastMessageId += 1;
+        // }
+
+
+
         //登録ユーザーからidを取得
         //$solution->user_id = Auth::user()->id;
         // インスタンスの状態をデータベースに書き込む
@@ -52,12 +62,15 @@ class SolutionController extends Controller
             }
             //カテゴリ
             $solution->category_id = $request->category_id;
-            // タイトル
+            //タイトル
             $solution->title = $request->title;
             //コンテンツ
             $solution->detail = $request->detail;
             //締め切り日
             $solution->limitDate = $request->limit;
+            //created_at挿入処理
+            $solution->created_at = $request->created_at;
+            
 
             $solution->save();
        }
@@ -109,14 +122,57 @@ class SolutionController extends Controller
         return redirect()->action('MichelController@top');
    }
 
+   
+
    public function searchResult(Request $request)
     {
+        
+        $today = date("Y-m-d");
         $categories = category::all();
+        // カテゴリー画面表示用
+        $myId = $request->session()->get('userid');
+        $userItems = solution::select('solutionUser_id', 'title', 'created_at')
+                ->where('resolutionUser_id', $myId)->get();
         if(isset($request->category))
         {
+
+            // カテゴリボタンを押したときの処理
             $cate = $request->category;
-            $myId = $request->session()->get('userid');
-            $items = solution::where('solutionUser_id','<>',$myId)->where('apply_flag',0)->where('category_id', $cate)->groupBy('solutionUser_id', 'title', 'created_at')->get();
+            // if($userItems->count() <= 0){
+                //$userItems(応募している企画)がなかったときの処理
+                $items = solution::where('solutionUser_id','!=',$myId)
+                                ->where('apply_flag',0)
+                                ->where('category_id', $cate)
+                                ->where('limitDate','>=',$today)
+                                ->groupBy('solutionUser_id', 'title', 'created_at')
+                                ->orderBy('created_at', 'desc')
+                                ->get();
+
+            // }else{
+            //     $items = solution::where('solutionUser_id','!=',$myId)
+            //                 ->where('apply_flag', 0)
+            //                 ->where('category_id', $cate);
+            //                 ->where('limitDate','>=',$today)
+                            
+            //     foreach ($userItems as $item) {
+            //         print_r($item->solutionUser_id);
+            //         echo " ";
+            //         print_r($item->title);
+            //         echo " ";
+            //         print_r($item->created_at);
+            //         echo "<br>";
+
+            //         // $items = $items->where('solutionUser_id', '=', $item->solutionUser_id)
+            //         $items = $items->where('title', '<>', $item->title);
+            //             // ->where('created_at', '=', $item->created_at);
+            //     }
+            //     $items = $items->groupBy('solutionUser_id', 'title', 'created_at')
+            //                 ->orderBy('created_at', 'desc');
+            //     $items = $items->get();
+            // }
+            
+            
+
             $cateName = category::where('id',$cate)->first()->name;
             if($items->count() > 0){
                 return view('solutions.searchResult', ['categories' => $categories,'items' => $items, 'word' => $cateName]);
@@ -125,22 +181,57 @@ class SolutionController extends Controller
             }
             
         }else{
+            // validation処理
+            $validate_rule = [
+                'search' => 'required'
+            ];
+            $this->validate($request,$validate_rule);
+            
+            // 検索バーから検索したときの処理
             $search =  $request->search;
-            $myId = $request->session()->get('userid');
             $items = [];
-            if(isset($search)){
+            if(isset($search))
+            {
                 $search = mb_convert_kana($search, 's','utf-8');
                 $data = preg_split("/[\s]+/", $search);
-                $items = solution::where('solutionUser_id','<>',$myId)->where('apply_flag',0)
-                                    ->groupBy('solutionUser_id', 'title', 'created_at')
-                                    ->wordSearch($data);
+                // if($userItems->count() <= 0)
+                // {
+                    $items = solution::where('solutionUser_id','!=',$myId)
+                                ->where('apply_flag',0)
+                                ->where('limitDate','>=',$today)
+                                ->groupBy('solutionUser_id', 'title', 'created_at')
+                                ->orderBy('created_at', 'desc');
+                // }else{
+                //     foreach ($userItems as $item)
+                //     {
+                //         print_r($item);
+                //         $items = solution::where('solutionUser_id','!=',$myId)
+                //                     ->where('apply_flag', 0)
+                //                     ->where('limitDate','>=',$today)
+                //                     ->where('solutionUser_id', '!=', $item->solutionUser_id)
+                //                     ->where('title', '!=', $item->title)
+                //                     ->where('created_at', '!=', $item->created_at)
+                //                     ->groupBy('solutionUser_id', 'title', 'created_at')
+                //                     ->orderBy('created_at', 'desc');
+                                    
+                //     }
+                // }
+                
+                foreach ($data as $obj)
+                {
+                    $items->where(function($items) use($obj){
+                        $items->where('title', 'like', '%' . $obj . '%')
+                            ->orWhere('detail', 'like', '%' . $obj . '%');
+                    });
+                }
+
+                $items = $items->get();
                 
                 $limit = 20;
                 if(mb_strlen($search) > $limit) { 
                     $search = mb_substr($search,0,$limit);
                     $search = $search."..." ;
                 }
-
             }
             if($items->count() > 0){
                 return view('solutions.searchResult', ['categories' => $categories,'items' => $items, 'word' => $search]);

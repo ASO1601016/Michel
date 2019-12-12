@@ -60,10 +60,15 @@
 .heart{
     width: 100px;
     height: 100px;
+    /* background: url(../../storage/image/web_heart_animation.png)no-repeat; */
     background: url(/storage/image/web_heart_animation.png)no-repeat;
     cursor: pointer;
     display: inline-block;
     margin: 0 auto;
+    
+}
+.heart:focus{
+        outline:0;
 }
 .hred{
     transition-delay: 5s;

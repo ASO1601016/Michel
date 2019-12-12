@@ -12,7 +12,7 @@
 
     <div class="container-fluid mb-5">
         <div class="form">
-            <form method="post" action="./confirm" enctype="multipart/form-data">
+            <form method="post" onSubmit="return double()" action="./confirm" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <!-- 学籍番号 -->
                 <div class="form-group">
@@ -124,4 +124,11 @@
             </form>
         </div>
     </div>
+    <script>
+        var set=0;
+        function double() {
+        if(set==0){ set=1; } else {
+        alert("只今処理中です。\n落ち着いてください。");
+        return false; }}
+    </script>
 @endsection
