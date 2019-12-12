@@ -23,7 +23,7 @@
                         @empty ($image)    
                             <img src="storage/icon/me.png" class="icon rounded-circle d-block mx-auto mt-2" width="100" height="100" id="preview">
                         @else
-                            <img src="{{$image}}" class="icon rounded-circle d-block mx-auto mt-2" width="100" height="100" id="preview">
+                            <img src="{{$image}}" class="icon rounded-circle d-block mx-auto mt-2" width="100" height="100" id="preview"style="object-fit:cover;">
                         @endempty
                     </span>
                     <input type="file" name="icon" id="filesend" onchange="this.form.submit()">
