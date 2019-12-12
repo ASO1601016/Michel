@@ -6,6 +6,7 @@
 <!-- <link rel="stylesheet" href="slick-theme.css" type="text/css"> -->
 
 @section('content')
+    
     <div class="wrap my-3">
         {{-- <h4 class="container-fluid text-center border p-2">
             <div class="text-small">

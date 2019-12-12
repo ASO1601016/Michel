@@ -30,7 +30,7 @@ class MichelController extends Controller
                             ->whereNotNull('limitDate')
                             ->where('limitDate','>=',$today)
                             ->groupBy('solutionUser_id', 'title', 'created_at')
-                            ->orderBy('created_at', 'desc')
+                            ->orderBy('limitDate', 'asc')
                             ->take(3)->get();
         $categories = category::all();
         if($newItems->count() > 0 && $limitItems->count() > 0){

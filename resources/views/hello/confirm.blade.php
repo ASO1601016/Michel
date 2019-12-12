@@ -5,6 +5,16 @@
 
 @section('headerTitle',"新規会員登録 / ログイン")
 @section('content')
+    <script>
+        var set=0;
+        function double() {
+            if(set==0){ set=1; } else {
+                // window.alert("只今処理中です。\n落ち着いてください。");
+                document.getElementById('doubleClick').disabled=true;
+            return false;
+            }
+        }
+    </script>
     <div class="text-center text-white p-1 mb-3" style="background-color:orange">
         <strong>会員情報の確認</strong>
     </div>
@@ -35,14 +45,5 @@
             </form>
         @endisset
     </div>
-    <script>
-        var set=0;
-        function double() {
-            if(set==0){ set=1; } else {
-                window.alert("只今処理中です。\n落ち着いてください。");
-                // document.getElementById('#doubleClick').disabled=true;
-            return false;
-            }
-        }
-    </script>
+    
 @endsection
