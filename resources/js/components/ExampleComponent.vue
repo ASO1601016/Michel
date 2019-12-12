@@ -10,7 +10,7 @@
                     </div>
                     <div class="partner" v-else>
                         <div class="faceicon">
-                            <img class="border border-dark" width="45" height="45" :src="img">
+                            <img class="border border-dark" style="object-fit:cover;" width="45" height="45" :src="img">
                             
                         </div>
                         <div class="chatting">
