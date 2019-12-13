@@ -6,20 +6,21 @@
 @section('headerTitle',"新規会員登録 / ログイン")
 @section('content')
     <script>
-        var set=0;
-        function double() {
-            if(set==0){ set=1; } else {
-                // window.alert("只今処理中です。\n落ち着いてください。");
-                document.getElementById('doubleClick').disabled=true;
-            return false;
-            }
+        var exec = false;
+        function double(thform) {
+            if(exec == true){ return false; };
+            exec = true;
+            
+            thform.getElementById('sub').disabled = true;
+            thform.getElementById('corr').disabled = true;
+            return true;
         }
     </script>
     <div class="text-center text-white p-1 mb-3" style="background-color:orange">
         <strong>会員情報の確認</strong>
     </div>
     @isset($id)
-        <form onSubmit="return double()" action="./complete" method="post">
+        <form action="./complete" method="post" onsubmit="return double(this);">
             {{ csrf_field() }}
             <div class="container-fluid d-block mx-auto">
                 <table width="100%" class="table table-borderless bg-darkgray text-small rounded-lg">
@@ -40,8 +41,8 @@
                     <div><img class="w-50 h-50 d-block mx-auto" src="{{ $read_temp_path }}" alt=""></div>
                 @endisset
                 
-                <input type="submit" class="btn btn-lg btn-block border-danger text-danger bg-white mt-5" value="登録する" name="action">
-                <input type="submit" class="btn btn-lg btn-block border-dark text-dark bg-white mt-3 mb-3" value="入力内容の修正" name="action">
+                <input type="submit" id="sub" class="btn btn-lg btn-block border-danger text-danger bg-white mt-5" value="登録する" name="action">
+                <input type="submit" id="corr" class="btn btn-lg btn-block border-dark text-dark bg-white mt-3 mb-3" value="入力内容の修正" name="action">
             </form>
         @endisset
     </div>

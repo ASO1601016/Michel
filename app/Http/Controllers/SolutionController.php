@@ -152,26 +152,28 @@ class SolutionController extends Controller
 
             }else{
 
-                $submitItems = solution::select('id');
                 foreach ($userItems as $item) {
-                    $submitItems = $submitItems->where('solutionUser_id',$item->solutionUser_id)
-                                        ->where('title',$item->title)
-                                        ->where('created_at',$item->created_at);
+                    $submitItems[] = solution::select('id')
+                                ->where('solutionUser_id',$item->solutionUser_id)
+                                ->where('title',$item->title)
+                                ->where('created_at',$item->created_at)
+                                ->get();
                 }
-                $submitItems = $submitItems->get();
 
-                foreach ($submitItems as $bbb) {
-                    print_r($bbb->id);
-                    echo "<br>";
-                }
                 $items = solution::where('solutionUser_id','!=',$myId)
-                            ->where('apply_flag', 0)
-                            ->where('category_id', $cate)
-                            ->where('limitDate','>=',$today)
-                            ->whereNotIn('id',$submitItems)
-                            ->groupBy('solutionUser_id', 'title', 'created_at')
-                            ->orderBy('created_at', 'desc')
-                            ->get();
+                                ->where('apply_flag', 0)
+                                ->where('category_id', $cate)
+                                ->where('limitDate','>=',$today);
+
+                foreach ($submitItems as $submitItem) {
+                    foreach ($submitItem as $ids) {
+                        $items = $items->whereNotIn('id',$ids);
+                    }
+                }
+                            
+                $items = $items->groupBy('solutionUser_id', 'title', 'created_at')
+                                ->orderBy('created_at', 'desc')
+                                ->get();
             }
             
             
@@ -184,13 +186,13 @@ class SolutionController extends Controller
             }
             
         }else{
+            // 検索バーから検索したときの処理
             // validation処理
             $validate_rule = [
                 'search' => 'required'
             ];
             $this->validate($request,$validate_rule);
             
-            // 検索バーから検索したときの処理
             $search =  $request->search;
             $items = [];
             if(isset($search))
@@ -200,25 +202,31 @@ class SolutionController extends Controller
                 if($userItems->count() <= 0)
                 {
                     $items = solution::where('solutionUser_id','!=',$myId)
-                                ->where('apply_flag',0)
-                                ->where('limitDate','>=',$today)
-                                ->groupBy('solutionUser_id', 'title', 'created_at')
-                                ->orderBy('created_at', 'desc');
+                                    ->where('apply_flag',0)
+                                    ->where('limitDate','>=',$today)
+                                    ->groupBy('solutionUser_id', 'title', 'created_at')
+                                    ->orderBy('created_at', 'desc');
                 }else{
 
-                    $submitItems = solution::select('id');
+                    
                     foreach ($userItems as $item) {
-                        $submitItems = $submitItems->where('solutionUser_id',$item->solutionUser_id)
+                        $submitItems[] = solution::select('id')
+                                            ->where('solutionUser_id',$item->solutionUser_id)
                                             ->where('title',$item->title)
-                                            ->where('created_at',$item->created_at);
+                                            ->where('created_at',$item->created_at)
+                                            ->get();
                     }
-                    $submitItems = $submitItems->get();
+                    
 
                     $items = solution::where('solutionUser_id','!=',$myId)
                                 ->where('apply_flag', 0)
-                                ->where('limitDate','>=',$today)
-                                ->whereNotIn('id',$submitItems)
-                                ->groupBy('solutionUser_id', 'title', 'created_at')
+                                ->where('limitDate','>=',$today);
+                                foreach ($submitItems as $submitItem) {
+                                    foreach ($submitItem as $ids) {
+                                        $items = $items->whereNotIn('id',$ids);
+                                    }
+                                }
+                                $items = $items->groupBy('solutionUser_id', 'title', 'created_at')
                                 ->orderBy('created_at', 'desc');
 
                 }

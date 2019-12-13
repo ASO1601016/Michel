@@ -5,8 +5,17 @@
     <link rel="stylesheet" href="{{ asset('/assets/css/submit.css') }}">
 @endsection
 @section('content')
-
-    <form method="post" action="{{ route('solutions.create') }}" onSubmit="return double()" enctype="multipart/form-data">
+<script>
+    var exec = false;
+    function double(thform) {
+        if(exec == true){ return false; };
+        exec = true;
+        
+        thform.getElementById('sub').disabled = true;
+        return true;
+    }
+</script>
+  <form method="post" action="{{ route('solutions.create') }}" onsubmit="return double(this);" enctype="multipart/form-data">
  @csrf
     <div class="wrap">
       <h4 class="container-fluid text-center border p-2">
@@ -118,17 +127,11 @@
         {{-- created_at送信処理 --}}
         <input type="hidden" name="created_at" value="{{date('Y-m-d')}}">
         <div class="form-submit">
-          <button type="submit" class="btn btn-success btn-lg btn-block my-3">投稿する</button>
+          <button type="submit" id="sub" class="btn btn-success btn-lg btn-block my-3">投稿する</button>
         </div>
 
       </div>
     </div>
 </form>
-<script>
-  var set=0;
-  function double() {
-  if(set==0){ set=1; } else {
-  alert("只今処理中です。\n落ち着いてください。");
-  return false; }}
-</script>
+
 @endsection
