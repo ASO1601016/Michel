@@ -29,7 +29,7 @@
                     
                     <button id="sub" type="button" :disabled="processing" @click="send()" class="justify-content-center border ml-1 col-xs-4 rounded btn-flat-simple" style="vertical-align: top;">送信</button>
                     <!-- @if ($flg) -->
-                        <form v-if="flg" method="get" action="./assessment" style="display: inline">
+                        <form v-if="!flg" method="get" action="./assessment" style="display: inline">
                             <!-- {{ csrf_field() }} -->
                             <button type="submit"  class="justify-content-center border ml-1 col-xs-4 rounded btn-flat-simple" style="vertical-align: top;">企画を終了</button>
                         </form>

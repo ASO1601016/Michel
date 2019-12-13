@@ -28,11 +28,11 @@ class UserController extends Controller
         $userid = $request->session()->get('userid');
         $solution->where('id',$solutionId)->update(['comp_flag'=>1]);
         
-        $youId = $solution->where('id',$solutionId)->first()->resolutionUser_id;
+        $youId = $solution->where('id',$solutionId)->first()->solutionUser_id;
         
         //評価計算
         $assessment = $request->star;
-        $completeCount = $solution->where('resolutionUser_id',$youId)->where('comp_flag',1)->count();
+        $completeCount = $solution->where('solutionUser_id',$youId)->where('comp_flag',1)->count();
         $status = $user->where('id',$youId)->first()->status;
         
         if($status != 0){ 
